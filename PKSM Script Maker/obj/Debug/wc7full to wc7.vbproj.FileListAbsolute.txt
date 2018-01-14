@@ -1,0 +1,12 @@
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\bin\Debug\wc7full to wc7.exe.config
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\bin\Debug\wc7full to wc7.exe
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\bin\Debug\wc7full to wc7.pdb
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\bin\Debug\wc7full to wc7.xml
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\obj\Debug\wc7full to wc7.vbprojResolveAssemblyReference.cache
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\obj\Debug\wc7full_to_wc7.Form1.resources
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\obj\Debug\wc7full_to_wc7.Resources.resources
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\obj\Debug\wc7full to wc7.vbproj.GenerateResource.Cache
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\obj\Debug\wc7full to wc7.vbproj.CoreCompileInputs.cache
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\obj\Debug\wc7full to wc7.exe
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\obj\Debug\wc7full to wc7.xml
+c:\users\nick\source\repos\wc7full to wc7\wc7full to wc7\obj\Debug\wc7full to wc7.pdb
