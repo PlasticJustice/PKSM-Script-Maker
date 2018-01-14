@@ -14,3 +14,5 @@ C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM 
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM Script Maker.exe
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM Script Maker.xml
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM Script Maker.pdb
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM Script Maker.vbprojResolveAssemblyReference.cache
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM_Script_Maker.UpdateCheck.resources

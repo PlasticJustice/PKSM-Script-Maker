@@ -9,7 +9,7 @@
     Dim stat As Integer = 0
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        checkUpdate()
         Dim Everest_Registry As Microsoft.Win32.RegistryKey = My.Computer.Registry.CurrentUser.OpenSubKey("Software\Python\PythonCore")
         If Everest_Registry Is Nothing Then
             'key does not exist
@@ -49,6 +49,16 @@
         End If
         Return Ans
     End Function 'custom MsgBox
+    Public Sub checkUpdate()
+        Dim ver As String = My.Application.Info.Version.ToString
+#If DEBUG Then
+        System.IO.File.WriteAllText(pathexe & "\version.txt", ver)
+#Else
+        If My.Computer.Network.IsAvailable Then
+            Dim msgU As New UpdateCheck
+        End If
+#End If
+    End Sub 'automatiquement faire une mise à jour
 
     'WC7FULL to WC7
     Private Shared Function HexStringToByteArray(ByRef strInput As String) As Byte()
