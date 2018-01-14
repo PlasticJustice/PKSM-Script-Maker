@@ -4,7 +4,7 @@
     Dim prog As String = dir & "\AutoUpdater.exe"
     Public Sub New()
         InitializeComponent()
-        Dim request As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create("https://raw.githubusercontent.com/PlasticJustice/VB-TicTacToe/master/TicTacToe/bin/Debug/version.txt")
+        Dim request As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create("https://github.com/PlasticJustice/PKSM-Script-Maker/raw/master/PKSM%20Script%20Maker/bin/Debug/version.txt")
         Dim response As System.Net.HttpWebResponse = request.GetResponse()
         Dim sr As System.IO.StreamReader = New System.IO.StreamReader(response.GetResponseStream())
         Dim newestversion As String = sr.ReadToEnd()
@@ -25,7 +25,7 @@
                 Case Else
 
             End Select
-            web.DownloadFileAsync(New Uri("https://github.com/PlasticJustice/VB-TicTacToe/raw/master/TicTacToe/AutoUpdater.exe"), prog)
+            web.DownloadFileAsync(New Uri("https://github.com/PlasticJustice/PKSM-Script-Maker/raw/master/PKSM%20Script%20Maker/AutoUpdater.exe"), prog)
             Timer1.Start()
         End If
         DialogResult = Windows.Forms.DialogResult.Yes
