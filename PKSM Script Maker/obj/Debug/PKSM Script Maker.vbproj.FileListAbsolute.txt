@@ -8,7 +8,6 @@ C:\Users\Nick\source\repos\wc7full to wc7\PKSM Script Maker\obj\Debug\PKSM Scrip
 C:\Users\Nick\source\repos\wc7full to wc7\PKSM Script Maker\obj\Debug\PKSM Script Maker.pdb
 C:\Users\Nick\source\repos\wc7full to wc7\PKSM Script Maker\obj\Debug\PKSM_Script_Maker.CustomMessageBox.resources
 C:\Users\Nick\source\repos\wc7full to wc7\PKSM Script Maker\obj\Debug\PKSM_Script_Maker.SplashScreen1.resources
-C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSM Script Maker.vbprojResolveAssemblyReference.cache
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSM_Script_Maker.CustomMessageBox.resources
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSM_Script_Maker.Form1.resources
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSM_Script_Maker.Resources.resources

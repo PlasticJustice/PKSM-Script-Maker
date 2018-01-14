@@ -5,7 +5,6 @@ C:\Users\Nick\source\repos\wc7full to wc7\PKSM Script Maker\obj\Release\PKSM Scr
 C:\Users\Nick\source\repos\wc7full to wc7\PKSM Script Maker\obj\Release\PKSM Script Maker.exe
 C:\Users\Nick\source\repos\wc7full to wc7\PKSM Script Maker\obj\Release\PKSM Script Maker.xml
 C:\Users\Nick\source\repos\wc7full to wc7\PKSM Script Maker\obj\Release\PKSM Script Maker.pdb
-C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM Script Maker.vbprojResolveAssemblyReference.cache
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM_Script_Maker.CustomMessageBox.resources
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM_Script_Maker.Form1.resources
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Release\PKSM_Script_Maker.Resources.resources

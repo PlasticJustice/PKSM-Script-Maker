@@ -1,1 +1,2 @@
-# PKSM-Script-Maker
+# PKSM Script Maker
+Makes PKSM Script creation easier.
