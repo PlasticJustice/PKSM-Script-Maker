@@ -273,20 +273,20 @@ Partial Class Form1
         Me.ComboBox2.Enabled = False
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
-        Me.ComboBox2.Location = New System.Drawing.Point(193, 40)
+        Me.ComboBox2.Location = New System.Drawing.Point(158, 40)
         Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(78, 21)
+        Me.ComboBox2.Size = New System.Drawing.Size(113, 21)
         Me.ComboBox2.TabIndex = 1
-        Me.ComboBox2.Text = "--Slot #--"
+        Me.ComboBox2.Text = "----------"
         '
         'ComboBox1
         '
         Me.ComboBox1.Enabled = False
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Wonder Card Slot"})
+        Me.ComboBox1.Items.AddRange(New Object() {"Wonder Card Slot", "Battle Styles"})
         Me.ComboBox1.Location = New System.Drawing.Point(12, 40)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(175, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(140, 21)
         Me.ComboBox1.TabIndex = 0
         Me.ComboBox1.Text = "-------Offsets-------"
         '

@@ -208,6 +208,31 @@
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         If ComboBox1.Text = "Wonder Card Slot" Then
             ComboBox2.Enabled = True
+            ComboBox2.Text = "--Slot #--"
+            Me.ComboBox2.Items.Clear()
+            ComboBox2.Items.Add("1")
+            ComboBox2.Items.Add("2")
+            ComboBox2.Items.Add("3")
+            ComboBox2.Items.Add("4")
+            ComboBox2.Items.Add("5")
+            ComboBox2.Items.Add("6")
+            ComboBox2.Items.Add("7")
+            ComboBox2.Items.Add("8")
+            ComboBox2.Items.Add("9")
+            ComboBox2.Items.Add("10")
+        ElseIf ComboBox1.Text = "Battle Styles" Then
+            ComboBox2.Enabled = True
+            ComboBox2.Text = "--Style--"
+            Me.ComboBox2.Items.Clear()
+            ComboBox2.Items.Add("Normal")
+            ComboBox2.Items.Add("Elegant")
+            ComboBox2.Items.Add("Girlish")
+            ComboBox2.Items.Add("Reverant")
+            ComboBox2.Items.Add("Smug")
+            ComboBox2.Items.Add("Left-Handed")
+            ComboBox2.Items.Add("Passionate")
+            ComboBox2.Items.Add("Idol")
+            ComboBox2.Items.Add("Nihilist")
         Else
             ComboBox2.Enabled = False
         End If
@@ -254,18 +279,51 @@
             Label5.Text = "0x66B40"
         ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66C48"
+
+        ElseIf ComboBox2.Text = "Normal" Then
+            Label5.Text = "0x147A | Data: 0"
+        ElseIf ComboBox2.Text = "Elegant" Then
+            Label5.Text = "0x147A | Data: 1"
+        ElseIf ComboBox2.Text = "Girlish" Then
+            Label5.Text = "0x147A | Data: 2"
+        ElseIf ComboBox2.Text = "Reverant" Then
+            Label5.Text = "0x147A | Data: 3"
+        ElseIf ComboBox2.Text = "Smug" Then
+            Label5.Text = "0x147A | Data: 4"
+        ElseIf ComboBox2.Text = "Left-Handed" Then
+            Label5.Text = "0x147A | Data: 5"
+        ElseIf ComboBox2.Text = "Passionate" Then
+            Label5.Text = "0x147A | Data: 6"
+        ElseIf ComboBox2.Text = "Idol" Then
+            Label5.Text = "0x147A | Data: 7"
+        ElseIf ComboBox2.Text = "Nihilist" Then
+            Label5.Text = "0x147A | Data: 8"
         End If
 
     End Sub
     Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
+        If ComboBox3.Text = "Sun/Moon" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("Wonder Card Slot")
+        ElseIf ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Items.Add("Battle Styles")
+        End If
         ComboBox1.Enabled = True
         ComboBox2_SelectedIndexChanged(sender, e)
     End Sub
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Dim dat() = Label5.Text.Split(" ")
         TabControl1.TabIndex -= 2
-        TextBox2.Text = Label5.Text
+        TextBox2.Text = dat(LBound(dat))
         If ComboBox1.Text = "Wonder Card Slot" Then
             TextBox4.Text = "0x108"
+        ElseIf ComboBox1.Text = "Battle Styles" Then
+            TextBox4.Text = "1"
+        End If
+        If Label5.Text.Contains("Data:") Then
+            TextBox3.Text = dat(UBound(dat))
         End If
         TabControl1.TabIndex += 2
     End Sub
