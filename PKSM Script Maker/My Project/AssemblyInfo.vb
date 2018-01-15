@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("PKSM Script Maker")>
+<Assembly: AssemblyTitle("PKSMScriptMaker")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("PKSM Script Maker")>
+<Assembly: AssemblyProduct("PKSMScriptMaker")>
 <Assembly: AssemblyCopyright("Copyright © Regnum 2018")>
 <Assembly: AssemblyTrademark("")>
 

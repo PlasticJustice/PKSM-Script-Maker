@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.PKSM_Script_Maker.My.MySettings
+        Friend ReadOnly Property Settings() As Global.PKSMScriptMaker.My.MySettings
             Get
-                Return Global.PKSM_Script_Maker.My.MySettings.Default
+                Return Global.PKSMScriptMaker.My.MySettings.Default
             End Get
         End Property
     End Module

@@ -32,12 +32,12 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.PKSM_Script_Maker.Form1
+            Me.MainForm = Global.PKSMScriptMaker.Form1
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateSplashScreen()
-            Me.SplashScreen = Global.PKSM_Script_Maker.SplashScreen1
+            Me.SplashScreen = Global.PKSMScriptMaker.SplashScreen1
         End Sub
     End Class
 End Namespace

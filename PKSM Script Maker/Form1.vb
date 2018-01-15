@@ -1,4 +1,5 @@
 ﻿Public Class Form1
+#Region "Variables"
     Dim pathexe = My.Application.Info.DirectoryPath
     Dim path = pathexe & "\assets"
     Dim web As New System.Net.WebClient
@@ -7,6 +8,7 @@
     Dim data(3) As String
 
     Dim stat As Integer = 0
+#End Region
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         checkUpdate()
@@ -58,9 +60,9 @@
             Dim msgU As New UpdateCheck
         End If
 #End If
-    End Sub 'automatiquement faire une mise à jour
+    End Sub 'AutoUpdater
 
-    'WC7FULL to WC7
+#Region "WC7FULL to WC7"
     Private Shared Function HexStringToByteArray(ByRef strInput As String) As Byte()
         Dim length As Integer
         Dim bOutput As Byte()
@@ -146,8 +148,9 @@
             Button3.Enabled = False
         End If
     End Sub
+#End Region
 
-    'Script Maker
+#Region "Script Maker"
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Then
             MsgBox("Missing Value(s)", MsgBoxStyle.OkOnly)
@@ -199,8 +202,9 @@
         OpenFileDialog2.ShowDialog()
         TextBox3.Text = OpenFileDialog2.FileName
     End Sub
+#End Region
 
-    'Info
+#Region "Info"
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         If ComboBox1.Text = "Wonder Card Slot" Then
             ComboBox2.Enabled = True
@@ -268,4 +272,6 @@
     Private Sub Label5_TextChanged(sender As Object, e As EventArgs) Handles Label5.TextChanged
         Button6.Enabled = True
     End Sub
+#End Region
+
 End Class
