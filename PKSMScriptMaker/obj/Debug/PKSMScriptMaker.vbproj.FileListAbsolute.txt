@@ -1,0 +1,22 @@
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.CustomMessageBox.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.Form1.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.Resources.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.SplashScreen1.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.UpdateCheck.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.vbproj.GenerateResource.Cache
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.vbproj.CoreCompileInputs.cache
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.exe
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.xml
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.pdb
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSM Script Maker\obj\Debug\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.CustomMessageBox.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Form1.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Resources.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.SplashScreen1.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.UpdateCheck.resources
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbproj.GenerateResource.Cache
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbproj.CoreCompileInputs.cache
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.exe
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.xml
+C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.pdb
