@@ -18,3 +18,13 @@ C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScr
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.exe
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.xml
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.pdb
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.CustomMessageBox.resources
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.Form1.resources
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.Resources.resources
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.SplashScreen1.resources
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.UpdateCheck.resources
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbproj.GenerateResource.Cache
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbproj.CoreCompileInputs.cache
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.exe
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.xml
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.pdb
