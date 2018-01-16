@@ -233,11 +233,37 @@
             ComboBox2.Items.Add("Passionate")
             ComboBox2.Items.Add("Idol")
             ComboBox2.Items.Add("Nihilist")
+        ElseIf ComboBox1.Text = "Vivillon" Then
+            ComboBox2.Enabled = True
+            ComboBox2.Text = "--Form--"
+            Me.ComboBox2.Items.Clear()
+            ComboBox2.Items.Add("Icy Snow")
+            ComboBox2.Items.Add("Polar")
+            ComboBox2.Items.Add("Tundra")
+            ComboBox2.Items.Add("Continental")
+            ComboBox2.Items.Add("Garden")
+            ComboBox2.Items.Add("Elegant")
+            ComboBox2.Items.Add("Meadow")
+            ComboBox2.Items.Add("Modern")
+            ComboBox2.Items.Add("Marine")
+            ComboBox2.Items.Add("Archipelago")
+            ComboBox2.Items.Add("High-Plains")
+            ComboBox2.Items.Add("Sandstorm")
+            ComboBox2.Items.Add("River")
+            ComboBox2.Items.Add("Monsoon")
+            ComboBox2.Items.Add("Savannah")
+            ComboBox2.Items.Add("Sun")
+            ComboBox2.Items.Add("Ocean")
+            ComboBox2.Items.Add("Jungle")
+            ComboBox2.Items.Add("Fancy")
+            ComboBox2.Items.Add("Pokéball")
         Else
             ComboBox2.Enabled = False
         End If
     End Sub
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+#Region "SM"
+        'SM WC
         If ComboBox2.Text = "1" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x65D00"
         ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Sun/Moon" Then
@@ -258,7 +284,50 @@
             Label5.Text = "0x66540"
         ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x66648"
-
+            'SM Viv
+        ElseIf ComboBox2.Text = "Icy Snow" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 0"
+        ElseIf ComboBox2.Text = "Polar" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 1"
+        ElseIf ComboBox2.Text = "Tundra" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 2"
+        ElseIf ComboBox2.Text = "Continental" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 3"
+        ElseIf ComboBox2.Text = "Garden" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 4"
+        ElseIf ComboBox2.Text = "Elegant" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 5"
+        ElseIf ComboBox2.Text = "Meadow" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 6"
+        ElseIf ComboBox2.Text = "Modern" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 7"
+        ElseIf ComboBox2.Text = "Marine" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 8"
+        ElseIf ComboBox2.Text = "Archipelago" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 9"
+        ElseIf ComboBox2.Text = "High-Plains" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 10"
+        ElseIf ComboBox2.Text = "Sandstorm" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 11"
+        ElseIf ComboBox2.Text = "River" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 12"
+        ElseIf ComboBox2.Text = "Monsoon" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 13"
+        ElseIf ComboBox2.Text = "Savannah" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 14"
+        ElseIf ComboBox2.Text = "Sun" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 15"
+        ElseIf ComboBox2.Text = "Ocean" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 16"
+        ElseIf ComboBox2.Text = "Jungle" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 17"
+        ElseIf ComboBox2.Text = "Fancy" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 18"
+        ElseIf ComboBox2.Text = "Pokéball" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4130 | Data: 19"
+#End Region
+#Region "USUM"
+            'USUM WC
         ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66300"
         ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "UltraSun/UltraMoon" Then
@@ -279,36 +348,79 @@
             Label5.Text = "0x66B40"
         ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66C48"
-
-        ElseIf ComboBox2.Text = "Normal" Then
+            'USUM BS
+        ElseIf ComboBox2.Text = "Normal" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 0"
-        ElseIf ComboBox2.Text = "Elegant" Then
+        ElseIf ComboBox2.Text = "Elegant" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 1"
-        ElseIf ComboBox2.Text = "Girlish" Then
+        ElseIf ComboBox2.Text = "Girlish" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 2"
-        ElseIf ComboBox2.Text = "Reverant" Then
+        ElseIf ComboBox2.Text = "Reverant" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 3"
-        ElseIf ComboBox2.Text = "Smug" Then
+        ElseIf ComboBox2.Text = "Smug" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 4"
-        ElseIf ComboBox2.Text = "Left-Handed" Then
+        ElseIf ComboBox2.Text = "Left-Handed" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 5"
-        ElseIf ComboBox2.Text = "Passionate" Then
+        ElseIf ComboBox2.Text = "Passionate" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 6"
-        ElseIf ComboBox2.Text = "Idol" Then
+        ElseIf ComboBox2.Text = "Idol" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 7"
-        ElseIf ComboBox2.Text = "Nihilist" Then
+        ElseIf ComboBox2.Text = "Nihilist" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x147A | Data: 8"
+            'USUM Viv
+        ElseIf ComboBox2.Text = "Icy Snow" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 0"
+        ElseIf ComboBox2.Text = "Polar" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 1"
+        ElseIf ComboBox2.Text = "Tundra" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 2"
+        ElseIf ComboBox2.Text = "Continental" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 3"
+        ElseIf ComboBox2.Text = "Garden" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 4"
+        ElseIf ComboBox2.Text = "Elegant" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 5"
+        ElseIf ComboBox2.Text = "Meadow" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 6"
+        ElseIf ComboBox2.Text = "Modern" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 7"
+        ElseIf ComboBox2.Text = "Marine" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 8"
+        ElseIf ComboBox2.Text = "Archipelago" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 9"
+        ElseIf ComboBox2.Text = "High-Plains" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 10"
+        ElseIf ComboBox2.Text = "Sandstorm" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 11"
+        ElseIf ComboBox2.Text = "River" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 12"
+        ElseIf ComboBox2.Text = "Monsoon" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 13"
+        ElseIf ComboBox2.Text = "Savannah" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 14"
+        ElseIf ComboBox2.Text = "Sun" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 15"
+        ElseIf ComboBox2.Text = "Ocean" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 16"
+        ElseIf ComboBox2.Text = "Jungle" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 17"
+        ElseIf ComboBox2.Text = "Fancy" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 18"
+        ElseIf ComboBox2.Text = "Pokéball" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x4530 | Data: 19"
+#End Region
         End If
-
     End Sub
     Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
         If ComboBox3.Text = "Sun/Moon" Then
             Me.ComboBox1.Items.Clear()
             ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Items.Add("Vivillon")
         ElseIf ComboBox3.Text = "UltraSun/UltraMoon" Then
             Me.ComboBox1.Items.Clear()
             ComboBox1.Items.Add("Wonder Card Slot")
             ComboBox1.Items.Add("Battle Styles")
+            ComboBox1.Items.Add("Vivillon")
         End If
         ComboBox1.Enabled = True
         ComboBox2_SelectedIndexChanged(sender, e)
@@ -319,7 +431,7 @@
         TextBox2.Text = dat(LBound(dat))
         If ComboBox1.Text = "Wonder Card Slot" Then
             TextBox4.Text = "0x108"
-        ElseIf ComboBox1.Text = "Battle Styles" Then
+        ElseIf ComboBox1.Text = "Battle Styles" Or ComboBox1.Text = "Vivillon" Then
             TextBox4.Text = "1"
         End If
         If Label5.Text.Contains("Data:") Then
