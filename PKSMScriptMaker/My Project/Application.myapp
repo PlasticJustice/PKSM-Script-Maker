@@ -5,7 +5,6 @@
   <SingleInstance>false</SingleInstance>
   <ShutdownMode>0</ShutdownMode>
   <EnableVisualStyles>true</EnableVisualStyles>
-  <AuthenticationMode>0</AuthenticationMode>
-  <SplashScreen>SplashScreen1</SplashScreen>
+  <AuthenticationMode>1</AuthenticationMode>
   <SaveMySettingsOnExit>true</SaveMySettingsOnExit>
 </MyApplicationData>

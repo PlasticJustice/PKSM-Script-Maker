@@ -28,3 +28,5 @@ C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScrip
 C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.exe
 C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.xml
 C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.pdb
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.about.resources
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbprojResolveAssemblyReference.cache

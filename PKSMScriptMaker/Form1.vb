@@ -15,7 +15,7 @@
         Dim Everest_Registry As Microsoft.Win32.RegistryKey = My.Computer.Registry.CurrentUser.OpenSubKey("Software\Python\PythonCore")
         If Everest_Registry Is Nothing Then
             'key does not exist
-            Dim py As Integer = MsgB("Python 3+ is required for script creation. Would you like to get python or continue without script creation?", 2, "Get Python", "Continue Anyway", "", "Python Required")
+            Dim py As Integer = MsgB("Python 3.x.x is required for script creation. Would you like to get python or continue without script creation?", 2, "Get Python", "Continue Anyway", "", "Python Required")
             If py = 6 Then
                 Dim webAddress As String = "https://www.python.org/downloads/"
                 Process.Start(webAddress)
@@ -61,6 +61,10 @@
         End If
 #End If
     End Sub 'AutoUpdater
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim about As New about
+        about.ShowDialog()
+    End Sub
 
 #Region "WC7FULL to WC7"
     Private Shared Function HexStringToByteArray(ByRef strInput As String) As Byte()

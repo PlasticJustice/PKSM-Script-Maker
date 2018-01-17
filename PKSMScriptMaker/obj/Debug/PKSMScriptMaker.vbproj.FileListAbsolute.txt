@@ -20,7 +20,6 @@ C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScrip
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.exe
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.xml
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.pdb
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
 C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.CustomMessageBox.resources
 C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Form1.resources
 C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Resources.resources
@@ -42,3 +41,5 @@ C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptM
 \\CPET-SVR\prod-homedirs$\18kochen\My Documents\Visual Studio 2015\Projects\PKSM-Script-Maker-master\PKSM-Script-Maker-master\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.UpdateCheck.resources
 \\CPET-SVR\prod-homedirs$\18kochen\My Documents\Visual Studio 2015\Projects\PKSM-Script-Maker-master\PKSM-Script-Maker-master\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbproj.GenerateResource.Cache
 \\CPET-SVR\prod-homedirs$\18kochen\My Documents\Visual Studio 2015\Projects\PKSM-Script-Maker-master\PKSM-Script-Maker-master\PKSMScriptMaker\bin\Debug\PKSMScriptMaker.exe.config
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.about.resources
+C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
