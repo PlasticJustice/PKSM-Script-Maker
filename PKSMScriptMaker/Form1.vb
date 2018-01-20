@@ -8,6 +8,37 @@
     Dim data(3) As String
 
     Dim stat As Integer = 0
+
+    Dim ext() As String
+#End Region
+
+    #Region "System Menu"
+    Public Const WM_SYSCOMMAND As Int32 = &H112
+    Public Const MF_BYPOSITION As Int32 = &H400
+    Public Const MYMENU1 As Int32 = 1000
+    'Public Const MYMENU2 As Int32 = 1001
+
+    Dim hSysMenu As Integer
+
+
+    Private Declare Function GetSystemMenu Lib "user32" (ByVal hwnd As Integer, ByVal bRevert As Integer) As Integer
+    Public Declare Function InsertMenu Lib "user32" Alias "InsertMenuA" _
+       (ByVal hMenu As IntPtr, ByVal nPosition As Integer, ByVal wFlags As Integer, ByVal wIDNewItem As Integer, ByVal lpNewItem As String) As Boolean
+
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+        MyBase.WndProc(m)
+        If (m.Msg = WM_SYSCOMMAND) Then
+            Select Case m.WParam.ToInt32
+                Case MYMENU1
+                    Dim about As New about
+                    about.ShowDialog()
+                    'Case MYMENU2
+                    'MsgBox("2")
+            End Select
+        End If
+    End Sub
+
+
 #End Region
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,7 +60,14 @@
         TabControl1.TabIndex += 1
         RichTextBox1.Hide()
         buttons()
-        TabControl1.TabIndex -= 1
+        TabControl1.TabIndex += 1
+        Button7.hide()
+        TabControl1.TabIndex -= 2
+
+        hSysMenu = GetSystemMenu(Me.Handle, False)
+        InsertMenu(hSysMenu, 5, MF_BYPOSITION, MYMENU1, "About...")
+        'InsertMenu(hSysMenu, 6, MF_BYPOSITION, MYMENU2, "My Menu 2")
+
     End Sub
     Private Function MsgB(ByVal mes As String, ByVal numB As Integer, ByVal But1 As String, ByVal But2 As String, ByVal But3 As String, ByVal head As String)
         Dim msg As New CustomMessageBox(mes, numB, But1, But2, But3, head)
@@ -66,7 +104,7 @@
         about.ShowDialog()
     End Sub
 
-#Region "WC7FULL to WC7"
+#Region "WCXFULL to WCX"
     Private Shared Function HexStringToByteArray(ByRef strInput As String) As Byte()
         Dim length As Integer
         Dim bOutput As Byte()
@@ -89,12 +127,12 @@
         Return (bOutput)
     End Function
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        OpenFileDialog1.Filter = "wc7full files (*.wc7full)|*.wc7full|All files (*.*)|*.*"
+        OpenFileDialog1.Filter = "wcxfull files (*.wc7full, *.wc6full)|*.wc7full;*.wc6full|All files (*.*)|*.*"
         OpenFileDialog1.ShowDialog()
         Dim myFile As String = OpenFileDialog1.FileName
         Dim ext() As String = myFile.Split(".")
 
-        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Then
+        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Or ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Then
             'Dim myFile As String = "..\..\0264 USUM - Item Roto Catch x1 (JPN).wc7full"
             Dim myBytes As Byte() = My.Computer.FileSystem.ReadAllBytes(myFile)
             Dim txtTemp As New System.Text.StringBuilder()
@@ -106,11 +144,16 @@
             stat = 1
             buttons()
         Else
-            MsgBox("Not a WC7FULL file", MsgBoxStyle.OkOnly)
+            MsgBox("Not a WCXFULL file", MsgBoxStyle.OkOnly)
         End If
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        SaveFileDialog1.Filter = "wc7 files (*.wc7)|*.wc7|All files (*.*)|*.*"
+        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Then
+            SaveFileDialog1.Filter = "wc7 files (*.wc7)|*.wc7|All files (*.*)|*.*"
+        End If
+        If ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Then
+            SaveFileDialog1.Filter = "wc6 files (*.wc6)|*.wc6|All files (*.*)|*.*"
+        End If
         SaveFileDialog1.ShowDialog()
         Dim myFile As String = SaveFileDialog1.FileName
 
@@ -202,7 +245,7 @@
         End If
     End Sub
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        OpenFileDialog2.Filter = "wc7 files (*.wc7)|*.wc7|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        OpenFileDialog2.Filter = "wcx files (*.wc7, *.wc6)|*.wc7;*.wc6|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
         OpenFileDialog2.ShowDialog()
         TextBox3.Text = OpenFileDialog2.FileName
     End Sub
@@ -266,9 +309,56 @@
         End If
     End Sub
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+#Region "XY"
+        If ComboBox2.Text = "1" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1BD00"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1BE08"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1BF10"
+        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1C018"
+        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1C120"
+        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1C228"
+        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1C330"
+        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1C438"
+        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1C540"
+        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x1C648"
+
+#End Region
+#Region "ORAS"
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1CD00"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1CE08"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1CF10"
+        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1D018"
+        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1D120"
+        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1D228"
+        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1D330"
+        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1D438"
+        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1D540"
+        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x1D648"
+
+
+#End Region
 #Region "SM"
-        'SM WC
-        If ComboBox2.Text = "1" And ComboBox3.Text = "Sun/Moon" Then
+            'SM WC
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x65D00"
         ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x65E08"
@@ -420,14 +510,27 @@
             Me.ComboBox1.Items.Clear()
             ComboBox1.Items.Add("Wonder Card Slot")
             ComboBox1.Items.Add("Vivillon")
+            ComboBox1.Enabled = True
+            ComboBox2_SelectedIndexChanged(sender, e)
         ElseIf ComboBox3.Text = "UltraSun/UltraMoon" Then
             Me.ComboBox1.Items.Clear()
             ComboBox1.Items.Add("Wonder Card Slot")
             ComboBox1.Items.Add("Battle Styles")
             ComboBox1.Items.Add("Vivillon")
+            ComboBox1.Enabled = True
+            ComboBox2_SelectedIndexChanged(sender, e)
+        ElseIf ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Enabled = True
+            ComboBox2_SelectedIndexChanged(sender, e)
+        ElseIf ComboBox3.Text = "X/Y" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Enabled = True
+            ComboBox2_SelectedIndexChanged(sender, e)
         End If
-        ComboBox1.Enabled = True
-        ComboBox2_SelectedIndexChanged(sender, e)
+
     End Sub
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Dim dat() = Label5.Text.Split(" ")

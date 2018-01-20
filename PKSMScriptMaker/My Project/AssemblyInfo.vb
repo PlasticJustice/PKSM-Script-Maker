@@ -9,8 +9,8 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("PKSMScriptMaker")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("A PKSM Script Maker")>
+<Assembly: AssemblyCompany("Regnum")>
 <Assembly: AssemblyProduct("PKSMScriptMaker")>
 <Assembly: AssemblyCopyright("Copyright © Regnum 2018")>
 <Assembly: AssemblyTrademark("")>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("0.1.0.3")>
-<Assembly: AssemblyFileVersion("0.1.0.3")>
+<Assembly: AssemblyVersion("0.1.1.0")>
+<Assembly: AssemblyFileVersion("0.1.1.0")>
