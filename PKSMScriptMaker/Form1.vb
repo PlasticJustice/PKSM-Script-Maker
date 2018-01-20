@@ -12,11 +12,11 @@
     Dim ext() As String
 #End Region
 
-    #Region "System Menu"
+#Region "System Menu"
     Public Const WM_SYSCOMMAND As Int32 = &H112
     Public Const MF_BYPOSITION As Int32 = &H400
     Public Const MYMENU1 As Int32 = 1000
-    'Public Const MYMENU2 As Int32 = 1001
+    Public Const MYMENU2 As Int32 = 1001
 
     Dim hSysMenu As Integer
 
@@ -32,8 +32,9 @@
                 Case MYMENU1
                     Dim about As New about
                     about.ShowDialog()
-                    'Case MYMENU2
-                    'MsgBox("2")
+                Case MYMENU2
+                    Dim options As New options
+                    options.ShowDialog()
             End Select
         End If
     End Sub
@@ -41,8 +42,18 @@
 
 #End Region
 
+    'Private Sub fonti()
+    '    System.IO.File.WriteAllBytes(pathexe & "\Regnum_Handwriting.ttf", My.Resources.Regnum_Handwriting)
+    '    Process.Start(pathexe & "\Regnum_Handwriting.ttf")
+
+    'End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        checkUpdate()
+        If My.Settings.AutoUpdating = True Then
+            checkUpdate()
+        End If
+        'fonti()
+        'System.IO.File.Delete(pathexe & "\Regnum_Handwriting.ttf")
         Dim Everest_Registry As Microsoft.Win32.RegistryKey = My.Computer.Registry.CurrentUser.OpenSubKey("Software\Python\PythonCore")
         If Everest_Registry Is Nothing Then
             'key does not exist
@@ -61,12 +72,12 @@
         RichTextBox1.Hide()
         buttons()
         TabControl1.TabIndex += 1
-        Button7.hide()
+        Button7.Hide()
         TabControl1.TabIndex -= 2
 
         hSysMenu = GetSystemMenu(Me.Handle, False)
         InsertMenu(hSysMenu, 5, MF_BYPOSITION, MYMENU1, "About...")
-        'InsertMenu(hSysMenu, 6, MF_BYPOSITION, MYMENU2, "My Menu 2")
+        InsertMenu(hSysMenu, 6, MF_BYPOSITION, MYMENU2, "Options...")
 
     End Sub
     Private Function MsgB(ByVal mes As String, ByVal numB As Integer, ByVal But1 As String, ByVal But2 As String, ByVal But3 As String, ByVal head As String)

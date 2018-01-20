@@ -41,3 +41,5 @@ C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Releas
 C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.exe
 C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.xml
 C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.pdb
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.options.resources

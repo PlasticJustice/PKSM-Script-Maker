@@ -76,7 +76,7 @@ Namespace My.Resources
         ''' 
         '''parser = argparse.ArgumentParser(description = &apos;Creates .pksm script files&apos;)
         '''parser.add_argument(&apos;output&apos;, help = &apos;Output file name&apos;)
-        '''parser.add_argument(&apos;-i&apos;, action = &apos;append&apos;, nargs = 4, metavar = (&apos;ofs&apos;, &apos;len&apos;, &apos;pld&apos;, [rest of string was truncated]&quot;;.
+        '''parser.add_argument(&apos;-i&apos;, action = &apos;append&apos;, nargs = 4, metavar = (&apos;ofs&apos; [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property PKSMScript() As String
             Get
