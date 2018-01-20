@@ -93,6 +93,7 @@ Partial Class about
         Me.Controls.Add(Me.LinkLabel2)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.LinkLabel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Name = "about"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "About"
