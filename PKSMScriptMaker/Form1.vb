@@ -76,7 +76,7 @@
         TabControl1.TabIndex -= 2
 
         hSysMenu = GetSystemMenu(Me.Handle, False)
-        InsertMenu(hSysMenu, 5, MF_BYPOSITION, MYMENU1, "About...")
+        InsertMenu(hSysMenu, 6.5, MF_BYPOSITION, MYMENU1, "About...")
         InsertMenu(hSysMenu, 6, MF_BYPOSITION, MYMENU2, "Options...")
 
     End Sub
