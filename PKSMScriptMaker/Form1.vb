@@ -256,7 +256,9 @@
         End If
     End Sub
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        OpenFileDialog2.Filter = "Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen5 WonderCards (*.pgf)|*.pgf|Gen4 WonderCards (*.pgt, *.pcd)|*.pgt;*.pcd|Pokémon Files (*.pk#)|*.pk7;*.pk6;*.pk5;*.pk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        'OpenFileDialog2.Filter = "Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen5 WonderCards (*.pgf)|*.pgf|Gen4 WonderCards (*.pgt, *.pcd)|*.pgt;*.pcd|Pokémon Files (*.pk#)|*.pk7;*.pk6;*.pk5;*.pk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        OpenFileDialog2.Filter = "Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen4 WonderCards (*.pgt)|*.pgt|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        ', *.pcd ';*.pcd
         OpenFileDialog2.ShowDialog()
         TextBox3.Text = OpenFileDialog2.FileName
     End Sub
@@ -621,6 +623,15 @@
             ComboBox1.Items.Add("Wonder Card Slot")
             ComboBox1.Enabled = True
             ComboBox2_SelectedIndexChanged(sender, e)
+        ElseIf ComboBox3.Text = "----Gen 5----" Then
+            'Me.ComboBox1.Items.Clear()
+            'ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Enabled = False
+            ComboBox2.Enabled = False
+            'ComboBox2_SelectedIndexChanged(sender, e)
+            Label5.Text = "Coming Soon: Requires Research"
+
+
         End If
 
     End Sub

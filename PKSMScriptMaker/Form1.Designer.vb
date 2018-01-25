@@ -252,7 +252,7 @@ Partial Class Form1
         'ComboBox3
         '
         Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Items.AddRange(New Object() {"Diamond/Pearl", "Platinum", "HeartGold/SoulSilver", "X/Y", "OmegaRuby/AlphaSapphire", "Sun/Moon", "UltraSun/UltraMoon"})
+        Me.ComboBox3.Items.AddRange(New Object() {"Diamond/Pearl", "Platinum", "HeartGold/SoulSilver", "----Gen 5----", "X/Y", "OmegaRuby/AlphaSapphire", "Sun/Moon", "UltraSun/UltraMoon"})
         Me.ComboBox3.Location = New System.Drawing.Point(70, 10)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(151, 21)
