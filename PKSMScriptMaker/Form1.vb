@@ -256,7 +256,7 @@
         End If
     End Sub
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        OpenFileDialog2.Filter = "wcx files (*.wc7, *.wc6)|*.wc7;*.wc6|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        OpenFileDialog2.Filter = "Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen5 WonderCards (*.pgf)|*.pgf|Gen4 WonderCards (*.pgt, *.pcd)|*.pgt;*.pcd|Pokémon Files (*.pk#)|*.pk7;*.pk6;*.pk5;*.pk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
         OpenFileDialog2.ShowDialog()
         TextBox3.Text = OpenFileDialog2.FileName
     End Sub
@@ -320,8 +320,74 @@
         End If
     End Sub
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+#Region "D/P"
+        If ComboBox2.Text = "1" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4A7FC"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4A900"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4AA04"
+        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4AB08"
+        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4AC0C"
+        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4AD10"
+        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4AE14"
+        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4AF18"
+        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4B01C"
+        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0x4B120"
+#End Region
+#Region "Pt"
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4B5C0"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4B6C4"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4B7C8"
+        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4B8CC"
+        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4B9D0"
+        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4BAD4"
+        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4BBD8"
+        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4BCDC"
+        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4BDE0"
+        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0x4BEE4"
+#End Region
+#Region "HG/SS"
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0x9E3C"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0x9F40"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xA044"
+        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xA148"
+        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xA24C"
+        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xA350"
+        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xA454"
+        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xA558"
+        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xA65C"
+        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xA760"
+#End Region
 #Region "XY"
-        If ComboBox2.Text = "1" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1BD00"
         ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1BE08"
@@ -540,6 +606,21 @@
             ComboBox1.Items.Add("Wonder Card Slot")
             ComboBox1.Enabled = True
             ComboBox2_SelectedIndexChanged(sender, e)
+        ElseIf ComboBox3.Text = "Diamond/Pearl" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Enabled = True
+            ComboBox2_SelectedIndexChanged(sender, e)
+        ElseIf ComboBox3.Text = "Platinum" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Enabled = True
+            ComboBox2_SelectedIndexChanged(sender, e)
+        ElseIf ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Enabled = True
+            ComboBox2_SelectedIndexChanged(sender, e)
         End If
 
     End Sub
@@ -548,7 +629,11 @@
         TabControl1.TabIndex -= 2
         TextBox2.Text = dat(LBound(dat))
         If ComboBox1.Text = "Wonder Card Slot" Then
-            TextBox4.Text = "0x108"
+            If ComboBox3.Text = "Diamond/Pearl" Or ComboBox3.Text = "Platinum" Or ComboBox3.Text = "HeartGold/SoulSilver" Then
+                TextBox4.Text = "0x104"
+            Else
+                TextBox4.Text = "0x108"
+            End If
         ElseIf ComboBox1.Text = "Battle Styles" Or ComboBox1.Text = "Vivillon" Then
             TextBox4.Text = "1"
         End If
