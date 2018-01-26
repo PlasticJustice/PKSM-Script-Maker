@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -50,6 +51,7 @@ Partial Class Form1
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
@@ -63,7 +65,8 @@ Partial Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(230, 66)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Open WCXFULL"
+        Me.Button1.Text = "Open WonderCard"
+        Me.ToolTip1.SetToolTip(Me.Button1, "Open a WonderCard" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "*.wc7full | *.wc6full | *.pcd")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'OpenFileDialog1
@@ -77,7 +80,8 @@ Partial Class Form1
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(230, 66)
         Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Save WCX"
+        Me.Button2.Text = "Save WonderCard"
+        Me.ToolTip1.SetToolTip(Me.Button2, "Save the Converted WonderCard" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "*.wc7 | *.wc6 | *.pgt")
         Me.Button2.UseVisualStyleBackColor = True
         '
         'RichTextBox1
@@ -303,7 +307,8 @@ Partial Class Form1
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(283, 239)
         Me.TabPage2.TabIndex = 0
-        Me.TabPage2.Text = "WCXFULL to WCX"
+        Me.TabPage2.Text = "WonderCard Converter"
+        Me.ToolTip1.SetToolTip(Me.TabPage2, "Converts WonderCards" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wc7full --> wc7" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wc6full --> wc6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "pcd --> pgt")
         '
         'OpenFileDialog2
         '
@@ -355,4 +360,5 @@ Partial Class Form1
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
+    Friend WithEvents ToolTip1 As ToolTip
 End Class

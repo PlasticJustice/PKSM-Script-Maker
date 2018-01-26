@@ -43,16 +43,16 @@ C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptM
 \\CPET-SVR\prod-homedirs$\18kochen\My Documents\Visual Studio 2015\Projects\PKSM-Script-Maker-master\PKSM-Script-Maker-master\PKSMScriptMaker\bin\Debug\PKSMScriptMaker.exe.config
 C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.about.resources
 C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.about.resources
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.CustomMessageBox.resources
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Form1.resources
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Resources.resources
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.SplashScreen1.resources
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.UpdateCheck.resources
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbproj.GenerateResource.Cache
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbproj.CoreCompileInputs.cache
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.exe
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.xml
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.pdb
-C:\Users\Kochen Family\Source\Repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.options.resources
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.about.resources
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.CustomMessageBox.resources
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Form1.resources
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Resources.resources
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.options.resources
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.SplashScreen1.resources
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.UpdateCheck.resources
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbproj.GenerateResource.Cache
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbproj.CoreCompileInputs.cache
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.exe
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.xml
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.pdb

@@ -10,6 +10,7 @@
     Dim stat As Integer = 0
 
     Dim ext() As String
+    Dim type As Integer = 0
 #End Region
 
 #Region "System Menu"
@@ -115,7 +116,7 @@
         about.ShowDialog()
     End Sub
 
-#Region "WCXFULL to WCX"
+#Region "WonderCard Converter"
     Private Shared Function HexStringToByteArray(ByRef strInput As String) As Byte()
         Dim length As Integer
         Dim bOutput As Byte()
@@ -138,13 +139,12 @@
         Return (bOutput)
     End Function
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        OpenFileDialog1.Filter = "wcxfull files (*.wc7full, *.wc6full)|*.wc7full;*.wc6full|All files (*.*)|*.*"
+        OpenFileDialog1.Filter = "Gen6/7 wcxfull files (*.wc7full, *.wc6full)|*.wc7full;*.wc6full|Gen4 PCD (*.pcd)|*.pcd|All files (*.*)|*.*"
         OpenFileDialog1.ShowDialog()
         Dim myFile As String = OpenFileDialog1.FileName
         Dim ext() As String = myFile.Split(".")
 
-        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Or ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Then
-            'Dim myFile As String = "..\..\0264 USUM - Item Roto Catch x1 (JPN).wc7full"
+        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Or ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Or ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
             Dim myBytes As Byte() = My.Computer.FileSystem.ReadAllBytes(myFile)
             Dim txtTemp As New System.Text.StringBuilder()
             For Each myByte As Byte In myBytes
@@ -152,30 +152,39 @@
             Next
             RichTextBox1.Text = txtTemp.ToString()
 
+            If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Or ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Then
+                type = 1
+            ElseIf ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
+                type = 2
+            End If
+
             stat = 1
             buttons()
         Else
-            MsgBox("Not a WCXFULL file", MsgBoxStyle.OkOnly)
+                MsgBox("Not a vaild file", MsgBoxStyle.OkOnly)
         End If
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        Dim myFileO As String = OpenFileDialog1.FileName
+        Dim ext() As String = myFileO.Split(".")
+
         If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Then
             SaveFileDialog1.Filter = "wc7 files (*.wc7)|*.wc7|All files (*.*)|*.*"
-        End If
-        If ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Then
+        ElseIf ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Then
             SaveFileDialog1.Filter = "wc6 files (*.wc6)|*.wc6|All files (*.*)|*.*"
+        ElseIf ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
+            SaveFileDialog1.Filter = "pgt files (*.pgt)|*.pgt|All files (*.*)|*.*"
         End If
         SaveFileDialog1.ShowDialog()
         Dim myFile As String = SaveFileDialog1.FileName
 
-        'Dim myFile As String = "..\..\0264 USUM - Item Roto Catch x1 (JPN) 2.wc7"
         Dim myBytes As Byte() = HexStringToByteArray(RichTextBox1.Text)
         My.Computer.FileSystem.WriteAllBytes(myFile, myBytes, False)
 
         stat = 0
         buttons()
     End Sub
-    Private Sub cut()
+    Private Sub cutWC()
         Dim SizeWC = 528
         Dim SizeFull = 1568
         Dim data As String = RichTextBox1.Text
@@ -186,8 +195,23 @@
         RichTextBox1.Text = data
         MsgBox("Successfully Converted", MsgBoxStyle.OkOnly)
     End Sub
+    Private Sub cutPCD()
+        Dim SizeWC = 520
+        Dim SizeFull = 1712
+        Dim data As String = RichTextBox1.Text
+        Debug.Print(data.Length)
+        If (data.Length = SizeFull) Then
+            data = data.Remove(SizeWC, SizeFull - SizeWC).ToArray()
+        End If
+        RichTextBox1.Text = data
+        MsgBox("Successfully Converted", MsgBoxStyle.OkOnly)
+    End Sub
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        cut()
+        If type = 1 Then
+            cutWC()
+        ElseIf type = 2 Then
+            cutPCD()
+        End If
         stat = 2
         buttons()
     End Sub
@@ -227,7 +251,7 @@
                 data(2) = "0x" & TextBox4.Text
             End If
             data(3) = TextBox3.Text
-            If data(3).Contains("C:\") Then
+            If data(3).Contains(":\") Then
                 Dim da() As String = data(3).Split("\")
                 da(UBound(da)) = da(UBound(da)).Replace(" ", "_")
                 If System.IO.File.Exists(pathexe & "\" & da(UBound(da))) Then
@@ -322,7 +346,7 @@
         End If
     End Sub
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
-#Region "D/P"
+#Region "DP"
         If ComboBox2.Text = "1" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4A7FC"
         ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Diamond/Pearl" Then
@@ -366,7 +390,7 @@
         ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4BEE4"
 #End Region
-#Region "HG/SS"
+#Region "HGSS"
         ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0x9E3C"
         ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "HeartGold/SoulSilver" Then
@@ -656,6 +680,8 @@
     Private Sub Label5_TextChanged(sender As Object, e As EventArgs) Handles Label5.TextChanged
         Button6.Enabled = True
     End Sub
+
+
 #End Region
 
 End Class
