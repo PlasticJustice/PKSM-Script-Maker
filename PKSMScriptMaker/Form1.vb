@@ -18,6 +18,7 @@
     Public Const MF_BYPOSITION As Int32 = &H400
     Public Const MYMENU1 As Int32 = 1000
     Public Const MYMENU2 As Int32 = 1001
+    Public Const MYMENU3 As Int32 = 1002
 
     Dim hSysMenu As Integer
 
@@ -36,6 +37,8 @@
                 Case MYMENU2
                     Dim options As New options
                     options.ShowDialog()
+                Case MYMENU3
+                    checkUpdate()
             End Select
         End If
     End Sub
@@ -79,7 +82,7 @@
         hSysMenu = GetSystemMenu(Me.Handle, False)
         InsertMenu(hSysMenu, 6.5, MF_BYPOSITION, MYMENU1, "About...")
         InsertMenu(hSysMenu, 6, MF_BYPOSITION, MYMENU2, "Options...")
-
+        InsertMenu(hSysMenu, 5.5, MF_BYPOSITION, MYMENU3, "Check for Updates...")
     End Sub
     Private Function MsgB(ByVal mes As String, ByVal numB As Integer, ByVal But1 As String, ByVal But2 As String, ByVal But3 As String, ByVal head As String)
         Dim msg As New CustomMessageBox(mes, numB, But1, But2, But3, head)
@@ -161,7 +164,7 @@
             stat = 1
             buttons()
         Else
-                MsgBox("Not a vaild file", MsgBoxStyle.OkOnly)
+            MsgBox("Not a vaild file", MsgBoxStyle.OkOnly)
         End If
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -285,6 +288,18 @@
         ', *.pcd ';*.pcd
         OpenFileDialog2.ShowDialog()
         TextBox3.Text = OpenFileDialog2.FileName
+    End Sub
+    Private Sub TabPage1_DragDrop(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles TabPage1.DragDrop
+        Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+        For Each pathfd In files
+            TextBox3.Text = pathfd
+        Next
+    End Sub
+
+    Private Sub TabPage1_DragEnter(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles TabPage1.DragEnter
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            e.Effect = DragDropEffects.Copy
+        End If
     End Sub
 #End Region
 
@@ -680,6 +695,8 @@
     Private Sub Label5_TextChanged(sender As Object, e As EventArgs) Handles Label5.TextChanged
         Button6.Enabled = True
     End Sub
+
+
 
 
 #End Region

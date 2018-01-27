@@ -119,6 +119,7 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.AllowDrop = True
         Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.TextBox4)

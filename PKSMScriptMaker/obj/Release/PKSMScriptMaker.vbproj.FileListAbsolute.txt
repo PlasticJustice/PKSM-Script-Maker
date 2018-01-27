@@ -18,18 +18,6 @@ C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScr
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.exe
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.xml
 C:\Users\Nick\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.pdb
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.CustomMessageBox.resources
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.Form1.resources
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.Resources.resources
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.SplashScreen1.resources
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.UpdateCheck.resources
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbproj.GenerateResource.Cache
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbproj.CoreCompileInputs.cache
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.exe
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.xml
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.pdb
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.about.resources
-C:\Users\Nick\Source\Repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.about.resources
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.CustomMessageBox.resources
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.Form1.resources
@@ -42,3 +30,16 @@ C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Releas
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.exe
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.xml
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.pdb
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.about.resources
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.CustomMessageBox.resources
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.Form1.resources
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.Resources.resources
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.options.resources
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.SplashScreen1.resources
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.UpdateCheck.resources
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbproj.GenerateResource.Cache
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.vbproj.CoreCompileInputs.cache
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.exe
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.xml
+C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Release\PKSMScriptMaker.pdb
