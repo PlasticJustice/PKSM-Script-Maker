@@ -70,6 +70,21 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>60BE65DE8B23BD89153A729E77677150B1D8B64C</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Regnum.pfx</ManifestKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MSBuild.AutoILMerge.Task, Version=1.0.0.0, Culture=en-US, processorArchitecture=MSIL">
       <HintPath>..\packages\MSBuild.AutoILMerge.Task.1.1.1\lib\net40\MSBuild.AutoILMerge.Task.dll</HintPath>
@@ -197,10 +212,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\ILMergeOrder.txt" />
-    <Content Include="icon.ico" />
     <Content Include="icon2.ico" />
     <Content Include="ILMergeInternalizeExcludeList.txt" />
     <Content Include="ILMergeOrder.txt" />
+    <None Include="Regnum.pfx" />
     <None Include="Resources\PKSMScript.py" />
   </ItemGroup>
   <ItemGroup>
