@@ -72,12 +72,13 @@
         Else
         End If
 
-        TabControl1.TabIndex += 1
+        TabControl1.TabIndex += 2
         RichTextBox1.Hide()
+        Button8.Hide()
         buttons()
-        TabControl1.TabIndex += 1
+        TabControl1.TabIndex -= 1
         Button7.Hide()
-        TabControl1.TabIndex -= 2
+        TabControl1.TabIndex -= 1
 
         hSysMenu = GetSystemMenu(Me.Handle, False)
         InsertMenu(hSysMenu, 6.5, MF_BYPOSITION, MYMENU1, "About...")
@@ -141,8 +142,29 @@
         Next i
         Return (bOutput)
     End Function
+    Private Sub sav()
+        Dim myFile As String = OpenFileDialog1.FileName
+        Dim ext() As String = myFile.Split(".")
+        Dim Fn() As String = myFile.Split("\")
+        Dim Fn2() As String = Fn(UBound(Fn)).Split(".")
+        Fn2(UBound(Fn2)) = Fn2(UBound(Fn2)).ToLower
+        Dim Fn3 As String = ""
+        For i = 0 To UBound(Fn2) Step 1
+            Fn3 = Fn3 & Fn2(i)
+        Next i
+        Dim Fn4 As String = ""
+        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Then
+            Fn4 = Fn3.Replace("wc7full", ".wc7")
+        ElseIf ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Then
+            Fn4 = Fn3.Replace("wc6full", ".wc6")
+        ElseIf ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
+            Fn4 = Fn3.Replace("pcd", ".pgt")
+        End If
+
+        SaveFileDialog1.FileName = Fn4
+    End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        OpenFileDialog1.Filter = "Gen6/7 wcxfull files (*.wc7full, *.wc6full)|*.wc7full;*.wc6full|Gen4 PCD (*.pcd)|*.pcd|All files (*.*)|*.*"
+        OpenFileDialog1.Filter = "WonderCards (*.wc7full, *.wc6full, *.pcd)|*.wc7full;*.wc6full;*.pcd|Gen6/7 WCxFULL (*.wc7full, *.wc6full)|*.wc7full;*.wc6full|Gen4 PCD (*.pcd)|*.pcd|All files (*.*)|*.*"
         OpenFileDialog1.ShowDialog()
         Dim myFile As String = OpenFileDialog1.FileName
         Dim ext() As String = myFile.Split(".")
@@ -160,7 +182,7 @@
             ElseIf ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
                 type = 2
             End If
-
+            sav()
             stat = 1
             buttons()
         Else
@@ -233,6 +255,19 @@
             Button3.Enabled = False
         End If
     End Sub
+    'Private Sub enc()
+    '    ' Decrypted, Encrypt
+    '    'Dim seed As UInteger = value.Seed
+    '    Dim i As Integer = 0
+    '    Dim wcData() As Byte = RichTextBox1.Text 'New Byte((2704) - 1) {}
+    '    Do While (i < wcData.Length)
+    '        BitConverter.GetBytes(CType(((BitConverter.ToUInt16(wcData, i)) + 16), System.UInt16)).CopyTo(wcData, i)
+    '        i = (i + 2)
+    '    Loop
+    'End Sub
+    'Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+    '    enc()
+    'End Sub
 #End Region
 
 #Region "Script Maker"
@@ -284,8 +319,7 @@
     End Sub
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         'OpenFileDialog2.Filter = "Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen5 WonderCards (*.pgf)|*.pgf|Gen4 WonderCards (*.pgt, *.pcd)|*.pgt;*.pcd|Pokémon Files (*.pk#)|*.pk7;*.pk6;*.pk5;*.pk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
-        OpenFileDialog2.Filter = "Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen4 WonderCards (*.pgt)|*.pgt|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
-        ', *.pcd ';*.pcd
+        OpenFileDialog2.Filter = "WonderCards (*.wc7, *.wc6, *.pgt)|*.wc7;*.wc6;*.pgt|Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen4 WonderCards (*.pgt)|*.pgt|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
         OpenFileDialog2.ShowDialog()
         TextBox3.Text = OpenFileDialog2.FileName
     End Sub
@@ -295,7 +329,6 @@
             TextBox3.Text = pathfd
         Next
     End Sub
-
     Private Sub TabPage1_DragEnter(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles TabPage1.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.Copy
@@ -695,6 +728,8 @@
     Private Sub Label5_TextChanged(sender As Object, e As EventArgs) Handles Label5.TextChanged
         Button6.Enabled = True
     End Sub
+
+
 
 
 

@@ -50,6 +50,7 @@ Partial Class Form1
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout()
@@ -68,10 +69,6 @@ Partial Class Form1
         Me.Button1.Text = "Open WonderCard"
         Me.ToolTip1.SetToolTip(Me.Button1, "Open a WonderCard" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "*.wc7full | *.wc6full | *.pcd")
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = " "
         '
         'Button2
         '
@@ -299,6 +296,7 @@ Partial Class Form1
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage2.Controls.Add(Me.Button8)
         Me.TabPage2.Controls.Add(Me.Button1)
         Me.TabPage2.Controls.Add(Me.Button3)
         Me.TabPage2.Controls.Add(Me.Button2)
@@ -311,9 +309,14 @@ Partial Class Form1
         Me.TabPage2.Text = "WonderCard Converter"
         Me.ToolTip1.SetToolTip(Me.TabPage2, "Converts WonderCards" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wc7full --> wc7" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wc6full --> wc6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "pcd --> pgt")
         '
-        'OpenFileDialog2
+        'Button8
         '
-        Me.OpenFileDialog2.FileName = " "
+        Me.Button8.Location = New System.Drawing.Point(256, 6)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(21, 202)
+        Me.Button8.TabIndex = 4
+        Me.Button8.Text = " "
+        Me.Button8.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -362,4 +365,5 @@ Partial Class Form1
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents Button8 As Button
 End Class
