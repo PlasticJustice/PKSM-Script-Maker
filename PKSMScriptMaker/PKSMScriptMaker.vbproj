@@ -218,8 +218,9 @@
     <Content Include="icon2.ico" />
     <Content Include="ILMergeInternalizeExcludeList.txt" />
     <Content Include="ILMergeOrder.txt" />
-    <None Include="Regnum.pfx" />
     <None Include="Resources\PKSMScript.py" />
+    <None Include="Resources\genScripts.py" />
+    <None Include="Regnum.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

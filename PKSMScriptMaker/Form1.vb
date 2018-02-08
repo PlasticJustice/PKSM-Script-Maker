@@ -4,6 +4,7 @@
     Dim path = pathexe & "\assets"
     Dim web As New System.Net.WebClient
     Dim prog As String = pathexe & "\PKSMScript.py"
+    Dim progG As String = pathexe & "\genScripts.py"
     Dim sm As String
     Dim data(3) As String
 
@@ -276,6 +277,7 @@
             MsgBox("Missing Value(s)", MsgBoxStyle.OkOnly)
         Else
             System.IO.File.WriteAllText(prog, My.Resources.PKSMScript)
+            System.IO.File.WriteAllText(progG, My.Resources.genScripts)
             ' web.DownloadFileAsync(New Uri("https://github.com/BernardoGiordano/PKSM-Tools/raw/master/PKSMScript/PKSMScript.py"), prog)
             data(0) = TextBox1.Text
             If TextBox2.Text.Contains("0x") Then
@@ -297,22 +299,13 @@
                     System.IO.File.Copy(data(3), pathexe & "\" & da(UBound(da)))
                 End If
                 Dim d2 As String = da(UBound(da))
-                sm = "@py -3 PKSMScript.py """ & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & d2 & """" & " 1
-@PUSHD %1
-@MOVE *.pksm output
-@del PKSMScript.py
-@del " & da(UBound(da)) & "
-@del output.bat"
+                sm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & d2 & """" & " 1"
             Else
-                sm = "@py -3 PKSMScript.py """ & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1
-@PUSHD %1
-@MOVE *.pksm output
-@del PKSMScript.py
-@del output.bat"
+                sm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1"
             End If
-            System.IO.File.WriteAllText(pathexe & "\output.bat", sm)
-            My.Computer.FileSystem.CreateDirectory(pathexe & "\output")
-            Process.Start(pathexe & "\output.bat")
+            System.IO.File.WriteAllText(pathexe & "\scriptsPSM.txt", sm)
+            'My.Computer.FileSystem.CreateDirectory(pathexe & "\output")
+            Process.Start(pathexe & "\genScripts.py")
             System.Threading.Thread.Sleep(1000)
             MsgBox("Done", 0)
         End If

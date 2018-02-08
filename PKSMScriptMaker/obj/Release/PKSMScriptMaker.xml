@@ -22,6 +22,33 @@ PKSMScriptMaker
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:PKSMScriptMaker.My.Resources.Resources.genScripts">
+<summary>
+  Looks up a localized string similar to #!/usr/bin/env python3
+import shlex, PKSMScript, sys, glob, shutil, os
+
+games = [&quot;PSM&quot;]
+
+def main(args):
+	shutil.rmtree(&quot;output&quot;, True)
+	os.mkdir(&quot;output&quot;)
+	for game in games:
+		generate(game)
+		
+		scriptFiles = glob.glob(&quot;*.pksm&quot;)
+		for pksmFile in scriptFiles:
+			shutil.move(pksmFile,&quot;output&quot;)
+	os.remove(&quot;scriptsPSM.txt&quot;)	
+	os.remove(&quot;PKSMScript.py&quot;)
+	os.remove(&quot;genScripts.py&quot;)
+	shutil.rmtree(&quot;__pycache__&quot;, True)
+	
+
+def generate(game):
+	with open(os.path.join(&quot;scripts%s.txt&quot; % game)) as pksmArgFile:
+		for [rest of string was truncated]&quot;;.
+</summary>
+</member>
 <member name="P:PKSMScriptMaker.My.Resources.Resources.PKSMScript">
 <summary>
   Looks up a localized string similar to #!/usr/bin/python3
@@ -39,7 +66,7 @@ import argparse
  
 parser = argparse.ArgumentParser(description = &apos;Creates .pksm script files&apos;)
 parser.add_argument(&apos;output&apos;, help = &apos;Output file name&apos;)
-parser.add_argument(&apos;-i&apos;, action = &apos;append&apos;, nargs = 4, metavar = (&apos;ofs&apos; [rest of string was truncated]&quot;;.
+parser.add_argument(&apos;-i&apos;, action = &apos;append&apos;, nargs = 4, metavar = (&apos;ofs&apos;, &apos;len&apos;, &apos;pld&apos;, [rest of string was truncated]&quot;;.
 </summary>
 </member>
 </members>
