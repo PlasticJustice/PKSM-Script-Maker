@@ -123,7 +123,7 @@
         about.ShowDialog()
     End Sub
 
-#Region "WonderCard Converter"
+#Region "Converter"
     Private Shared Function HexStringToByteArray(ByRef strInput As String) As Byte()
         Dim length As Integer
         Dim bOutput As Byte()
@@ -162,17 +162,31 @@
             Fn4 = Fn3.Replace("wc6full", ".wc6")
         ElseIf ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
             Fn4 = Fn3.Replace("pcd", ".pgt")
+        ElseIf ext(UBound(ext)) = "ek7" Or ext(UBound(ext)) = "EK7" Then
+            Fn4 = Fn3.Replace("ek7", ".smk7")
+        ElseIf ext(UBound(ext)) = "ek6" Or ext(UBound(ext)) = "EK6" Then
+            Fn4 = Fn3.Replace("ek6", ".smk6")
+        ElseIf ext(UBound(ext)) = "ek5" Or ext(UBound(ext)) = "EK5" Then
+            Fn4 = Fn3.Replace("ek5", ".smk5")
+        ElseIf ext(UBound(ext)) = "ek4" Or ext(UBound(ext)) = "EK4" Then
+            Fn4 = Fn3.Replace("ek4", ".smk4")
+            'ElseIf ext(UBound(ext)) = "ek3" Or ext(UBound(ext)) = "EK3" Then
+            '    Fn4 = Fn3.Replace("ek3", ".smk3")
+            'ElseIf ext(UBound(ext)) = "ek2" Or ext(UBound(ext)) = "EK2" Then
+            '    Fn4 = Fn3.Replace("ek2", ".smk2")
+            'ElseIf ext(UBound(ext)) = "ek1" Or ext(UBound(ext)) = "EK1" Then
+            '    Fn4 = Fn3.Replace("ek1", ".smk1")
         End If
 
         SaveFileDialog1.FileName = Fn4
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        OpenFileDialog1.Filter = "WonderCards (*.wc7full, *.wc6full, *.pcd)|*.wc7full;*.wc6full;*.pcd|Gen6/7 WCxFULL (*.wc7full, *.wc6full)|*.wc7full;*.wc6full|Gen4 PCD (*.pcd)|*.pcd|All files (*.*)|*.*"
+        OpenFileDialog1.Filter = "All Supported Files (FULLWonderCards, *.ek#)|*.wc7full;*.wc6full;*.pcd;*.ek7;*.ek6;*.ek5;*.ek4|WonderCards (*.wc7full, *.wc6full, *.pcd)|*.wc7full;*.wc6full;*.pcd|Encrypted PK Files (*.ek#)|*.ek7;*.ek6;*.ek5;*.ek4;*.ek3;*.ek2;*.ek1|All files (*.*)|*.*"
         OpenFileDialog1.ShowDialog()
         Dim myFile As String = OpenFileDialog1.FileName
         Dim ext() As String = myFile.Split(".")
 
-        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Or ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Or ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
+        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Or ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Or ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Or ext(UBound(ext)) = "ek7" Or ext(UBound(ext)) = "EK7" Or ext(UBound(ext)) = "ek6" Or ext(UBound(ext)) = "EK6" Or ext(UBound(ext)) = "ek4" Or ext(UBound(ext)) = "EK4" Or ext(UBound(ext)) = "ek5" Or ext(UBound(ext)) = "EK5" Then
             Dim myBytes As Byte() = My.Computer.FileSystem.ReadAllBytes(myFile)
             Dim txtTemp As New System.Text.StringBuilder()
             For Each myByte As Byte In myBytes
@@ -184,6 +198,12 @@
                 type = 1
             ElseIf ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
                 type = 2
+            ElseIf ext(UBound(ext)) = "ek7" Or ext(UBound(ext)) = "EK7" Or ext(UBound(ext)) = "ek6" Or ext(UBound(ext)) = "EK6" Then
+                type = 3
+            ElseIf ext(UBound(ext)) = "ek4" Or ext(UBound(ext)) = "EK4" Then
+                type = 4
+            ElseIf ext(UBound(ext)) = "ek5" Or ext(UBound(ext)) = "EK5" Then
+                type = 5
             End If
             sav()
             stat = 1
@@ -202,6 +222,14 @@
             SaveFileDialog1.Filter = "wc6 files (*.wc6)|*.wc6|All files (*.*)|*.*"
         ElseIf ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
             SaveFileDialog1.Filter = "pgt files (*.pgt)|*.pgt|All files (*.*)|*.*"
+        ElseIf ext(UBound(ext)) = "ek7" Or ext(UBound(ext)) = "EK7" Then
+            SaveFileDialog1.Filter = "Script Maker PK7 files (*.smk7)|*.smk7|All files (*.*)|*.*"
+        ElseIf ext(UBound(ext)) = "ek6" Or ext(UBound(ext)) = "EK6" Then
+            SaveFileDialog1.Filter = "Script Maker PK6 files (*.smk6)|*.smk6|All files (*.*)|*.*"
+        ElseIf ext(UBound(ext)) = "ek4" Or ext(UBound(ext)) = "EK4" Then
+            SaveFileDialog1.Filter = "Script Maker PK4 files (*.smk4)|*.smk4|All files (*.*)|*.*"
+        ElseIf ext(UBound(ext)) = "ek5" Or ext(UBound(ext)) = "EK5" Then
+            SaveFileDialog1.Filter = "Script Maker PK5 files (*.smk5)|*.smk5|All files (*.*)|*.*"
         End If
         SaveFileDialog1.ShowDialog()
         Dim myFile As String = SaveFileDialog1.FileName
@@ -216,7 +244,6 @@
         Dim SizeWC = 528
         Dim SizeFull = 1568
         Dim data As String = RichTextBox1.Text
-        Debug.Print(data.Length)
         If (data.Length = SizeFull) Then
             data = data.Skip(SizeFull - SizeWC).ToArray()
         End If
@@ -227,9 +254,38 @@
         Dim SizeWC = 520
         Dim SizeFull = 1712
         Dim data As String = RichTextBox1.Text
-        Debug.Print(data.Length)
         If (data.Length = SizeFull) Then
             data = data.Remove(SizeWC, SizeFull - SizeWC).ToArray()
+        End If
+        RichTextBox1.Text = data
+        MsgBox("Successfully Converted", MsgBoxStyle.OkOnly)
+    End Sub
+    Private Sub cutEK67()
+        Dim want = 464
+        Dim chuck = 520
+        Dim data As String = RichTextBox1.Text
+        If (data.Length = chuck) Then
+            data = data.Remove(want, chuck - want).ToArray()
+        End If
+        RichTextBox1.Text = data
+        MsgBox("Successfully Converted", MsgBoxStyle.OkOnly)
+    End Sub
+    Private Sub cutEK4()
+        Dim want = 272
+        Dim chuck = 472
+        Dim data As String = RichTextBox1.Text
+        If (data.Length = chuck) Then
+            data = data.Remove(want, chuck - want).ToArray()
+        End If
+        RichTextBox1.Text = data
+        MsgBox("Successfully Converted", MsgBoxStyle.OkOnly)
+    End Sub
+    Private Sub cutEK5()
+        Dim want = 272
+        Dim chuck = 440
+        Dim data As String = RichTextBox1.Text
+        If (data.Length = chuck) Then
+            data = data.Remove(want, chuck - want).ToArray()
         End If
         RichTextBox1.Text = data
         MsgBox("Successfully Converted", MsgBoxStyle.OkOnly)
@@ -239,6 +295,12 @@
             cutWC()
         ElseIf type = 2 Then
             cutPCD()
+        ElseIf type = 3 Then
+            cutEK67()
+        ElseIf type = 4 Then
+            cutEK4()
+        ElseIf type = 5 Then
+            cutEK5()
         End If
         stat = 2
         buttons()
@@ -297,15 +359,20 @@
                 Dim da() As String = data(3).Split("\")
                 da(UBound(da)) = da(UBound(da)).Replace(" ", "_")
                 Dim ex() As String = da(UBound(da)).Split(".")
-                Dim wcfn As String
-                If ex(UBound(ex)) = "wc7" Then
+                Dim dex As String = ex(UBound(ex)).ToLower
+                Dim wcfn As String = ""
+                If dex = "wc7" Then
                     wcfn = "g7wc.wc7"
-                ElseIf ex(UBound(ex)) = "wc6" Then
+                ElseIf dex = "wc6" Then
                     wcfn = "g6wc.wc6"
-                ElseIf ex(UBound(ex)) = "pgf" Then
+                ElseIf dex = "pgf" Then
                     wcfn = "g5wc.pgf"
-                ElseIf ex(UBound(ex)) = "pgt" Then
+                ElseIf dex = "pgt" Then
                     wcfn = "g4wc.pgt"
+                ElseIf dex = "bin" Then
+                    wcfn = "binary.bin"
+                ElseIf dex = "txt" Then
+                    wcfn = "text.txt"
                 End If
                 If System.IO.File.Exists(pathexe & "\" & wcfn) Then
                 Else
@@ -317,7 +384,6 @@
                 sm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1"
             End If
             System.IO.File.WriteAllText(pathexe & "\scripts" & gt & ".txt", sm)
-            'My.Computer.FileSystem.CreateDirectory(pathexe & "\output")
             Process.Start(pathexe & "\genScripts.py")
             System.Threading.Thread.Sleep(1000)
             MsgBox("Done", 0)
@@ -325,7 +391,7 @@
     End Sub
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         'OpenFileDialog2.Filter = "Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen5 WonderCards (*.pgf)|*.pgf|Gen4 WonderCards (*.pgt, *.pcd)|*.pgt;*.pcd|Pokémon Files (*.pk#)|*.pk7;*.pk6;*.pk5;*.pk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
-        OpenFileDialog2.Filter = "WonderCards (*.wc7, *.wc6, *.pgf, *.pgt)|*.wc7;*.wc6;*.pgf;*.pgt|Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen5 WonderCards (*.pgf)|*.pgf|Gen4 WonderCards (*.pgt)|*.pgt|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        OpenFileDialog2.Filter = "All Supported Files (WonderCards, *.smk#, Binary, and Text files)|*.wc7;*.wc6;*.pgf;*.pgt;*.bin;*.txt;*.smk7;*.smk6;*.smk5;*.smk4|WonderCards (*.wc7, *.wc6, *.pgf, *.pgt)|*.wc7;*.wc6;*.pgf;*.pgt|Script Maker PK files (*.smk#)|*.smk7;*.smk6;*.smk5;*.smk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
         OpenFileDialog2.ShowDialog()
         TextBox3.Text = OpenFileDialog2.FileName
     End Sub
@@ -341,9 +407,7 @@
         End If
     End Sub
     Private Sub ComboBox4_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox4.SelectedIndexChanged
-        If ComboBox4.Text = "--Game--" Then
-            gt = "PSM"
-        ElseIf ComboBox4.Text = "Diamond/Pearl" Then
+        If ComboBox4.Text = "Diamond/Pearl" Then
             gt = "DP"
         ElseIf ComboBox4.Text = "Platinum" Then
             gt = "PT"
@@ -361,6 +425,8 @@
             gt = "SM"
         ElseIf ComboBox4.Text = "UltraSun/UltraMoon" Then
             gt = "USUM"
+        Else
+            gt = "PSM"
         End If
     End Sub
 #End Region
@@ -371,16 +437,16 @@
             ComboBox2.Enabled = True
             ComboBox2.Text = "--Slot #--"
             Me.ComboBox2.Items.Clear()
-            ComboBox2.Items.Add("1")
-            ComboBox2.Items.Add("2")
-            ComboBox2.Items.Add("3")
-            ComboBox2.Items.Add("4")
-            ComboBox2.Items.Add("5")
-            ComboBox2.Items.Add("6")
-            ComboBox2.Items.Add("7")
-            ComboBox2.Items.Add("8")
-            ComboBox2.Items.Add("9")
-            ComboBox2.Items.Add("10")
+            ComboBox2.Items.Add("WC 1")
+            ComboBox2.Items.Add("WC 2")
+            ComboBox2.Items.Add("WC 3")
+            ComboBox2.Items.Add("WC 4")
+            ComboBox2.Items.Add("WC 5")
+            ComboBox2.Items.Add("WC 6")
+            ComboBox2.Items.Add("WC 7")
+            ComboBox2.Items.Add("WC 8")
+            ComboBox2.Items.Add("WC 9")
+            ComboBox2.Items.Add("WC 10")
         ElseIf ComboBox1.Text = "Battle Styles" Then
             ComboBox2.Enabled = True
             ComboBox2.Text = "--Style--"
@@ -447,114 +513,157 @@
             ElseIf ComboBox3.Text = "Sun/Moon" Then
                 Label5.Text = "0x50D08"
             End If
-
         ElseIf ComboBox1.Text = "Language" Then
-                ComboBox2.Enabled = True
-                ComboBox2.Text = "--Lang--"
-                Me.ComboBox2.Items.Clear()
-                ComboBox2.Items.Add("日本語")
-                ComboBox2.Items.Add("English")
-                ComboBox2.Items.Add("Français")
-                ComboBox2.Items.Add("Italiano")
-                ComboBox2.Items.Add("Deutsch")
-                ComboBox2.Items.Add("Español")
+            ComboBox2.Enabled = True
+            ComboBox2.Text = "--Lang--"
+            Me.ComboBox2.Items.Clear()
+            ComboBox2.Items.Add("日本語")
+            ComboBox2.Items.Add("English")
+            ComboBox2.Items.Add("Français")
+            ComboBox2.Items.Add("Italiano")
+            ComboBox2.Items.Add("Deutsch")
+            ComboBox2.Items.Add("Español")
             ComboBox2.Items.Add("한국어")
             If ComboBox3.Text = "UltraSun/UltraMoon" Or ComboBox3.Text = "Sun/Moon" Then
                 ComboBox2.Items.Add("中文 (简体)")
                 ComboBox2.Items.Add("中文 (繁體)")
                 'ComboBox2.Items.Add("10")
             End If
+        ElseIf ComboBox1.Text = "BOX 1" Then
+            ComboBox2.Enabled = True
+            ComboBox2.Text = "--Slot #--"
+            Me.ComboBox2.Items.Clear()
+            ComboBox2.Items.Add("1")
+            ComboBox2.Items.Add("2")
+            ComboBox2.Items.Add("3")
         Else
-                ComboBox2.Enabled = False
+            ComboBox2.Enabled = False
         End If
     End Sub
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
 #Region "DP"
-        If ComboBox2.Text = "1" And ComboBox3.Text = "Diamond/Pearl" Then
+        If ComboBox2.Text = "WC 1" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4A7FC"
-        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 2" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4A900"
-        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 3" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4AA04"
-        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 4" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4AB08"
-        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 5" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4AC0C"
-        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 6" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4AD10"
-        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 7" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4AE14"
-        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 8" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4AF18"
-        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 9" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4B01C"
-        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "Diamond/Pearl" Then
+        ElseIf ComboBox2.Text = "WC 10" And ComboBox3.Text = "Diamond/Pearl" Then
             Label5.Text = "0x4B120"
+
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0xC104"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0xC18C"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Diamond/Pearl" Then
+            Label5.Text = "0xC214"
 #End Region
 #Region "Pt"
-        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 1" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4B5C0"
-        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 2" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4B6C4"
-        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 3" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4B7C8"
-        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 4" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4B8CC"
-        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 5" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4B9D0"
-        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 6" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4BAD4"
-        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 7" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4BBD8"
-        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 8" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4BCDC"
-        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 9" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4BDE0"
-        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "Platinum" Then
+        ElseIf ComboBox2.Text = "WC 10" And ComboBox3.Text = "Platinum" Then
             Label5.Text = "0x4BEE4"
+
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0xCF30"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0xCFB8"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Platinum" Then
+            Label5.Text = "0xD040"
 #End Region
 #Region "HGSS"
-        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 1" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0x9E3C"
-        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 2" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0x9F40"
-        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 3" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0xA044"
-        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 4" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0xA148"
-        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 5" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0xA24C"
-        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 6" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0xA350"
-        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 7" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0xA454"
-        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 8" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0xA558"
-        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 9" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0xA65C"
-        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+        ElseIf ComboBox2.Text = "WC 10" And ComboBox3.Text = "HeartGold/SoulSilver" Then
             Label5.Text = "0xA760"
+
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xF700"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xF788"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "HeartGold/SoulSilver" Then
+            Label5.Text = "0xF810"
+#End Region
+#Region "BW"
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Black/White" Then
+            Label5.Text = "0x400"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Black/White" Then
+            Label5.Text = "0x488"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Black/White" Then
+            Label5.Text = "0x510"
+#End Region
+#Region "B2W2"
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Black 2/White 2" Then
+            Label5.Text = "0x400"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Black 2/White 2" Then
+            Label5.Text = "0x488"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Black 2/White 2" Then
+            Label5.Text = "0x510"
 #End Region
 #Region "XY"
-        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 1" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1BD00"
-        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 2" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1BE08"
-        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 3" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1BF10"
-        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 4" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1C018"
-        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 5" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1C120"
-        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 6" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1C228"
-        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 7" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1C330"
-        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 8" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1C438"
-        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 9" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1C540"
-        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "X/Y" Then
+        ElseIf ComboBox2.Text = "WC 10" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1C648"
             'ORAS Viv
         ElseIf ComboBox2.Text = "Icy Snow" And ComboBox3.Text = "X/Y" Then
@@ -612,27 +721,34 @@
             Label5.Text = "0x1402D | Data: 0x7"
         ElseIf ComboBox2.Text = "한국어" And ComboBox3.Text = "X/Y" Then
             Label5.Text = "0x1402D | Data: 0x8"
+            'box 1
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x22600"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x226E8"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "X/Y" Then
+            Label5.Text = "0x227D0"
 #End Region
 #Region "ORAS"
-        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 1" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1CD00"
-        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 2" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1CE08"
-        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 3" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1CF10"
-        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 4" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1D018"
-        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 5" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1D120"
-        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 6" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1D228"
-        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 7" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1D330"
-        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 8" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1D438"
-        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 9" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1D540"
-        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+        ElseIf ComboBox2.Text = "WC 10" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1D648"
             'ORAS Viv
         ElseIf ComboBox2.Text = "Icy Snow" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
@@ -690,28 +806,35 @@
             Label5.Text = "0x1402D | Data: 0x7"
         ElseIf ComboBox2.Text = "한국어" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
             Label5.Text = "0x1402D | Data: 0x8"
+            'box 1
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x33000"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x330E8"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "OmegaRuby/AlphaSapphire" Then
+            Label5.Text = "0x331D0"
 #End Region
 #Region "SM"
             'SM WC
-        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 1" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x65D00"
-        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 2" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x65E08"
-        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 3" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x65F10"
-        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 4" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x66018"
-        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 5" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x66120"
-        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 6" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x66228"
-        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 7" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x66330"
-        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 8" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x66438"
-        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 9" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x66540"
-        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "Sun/Moon" Then
+        ElseIf ComboBox2.Text = "WC 10" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x66648"
             'SM Viv
         ElseIf ComboBox2.Text = "Icy Snow" And ComboBox3.Text = "Sun/Moon" Then
@@ -773,28 +896,35 @@
             Label5.Text = "0x1235 | Data: 0x9"
         ElseIf ComboBox2.Text = "中文 (繁體)" And ComboBox3.Text = "Sun/Moon" Then
             Label5.Text = "0x1235 | Data: 0xA"
+            'box 1
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4E00"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4EE8"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "Sun/Moon" Then
+            Label5.Text = "0x4FD0"
 #End Region
 #Region "USUM"
             'USUM WC
-        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 1" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66300"
-        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 2" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66408"
-        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 3" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66510"
-        ElseIf ComboBox2.Text = "4" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 4" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66618"
-        ElseIf ComboBox2.Text = "5" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 5" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66720"
-        ElseIf ComboBox2.Text = "6" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 6" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66828"
-        ElseIf ComboBox2.Text = "7" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 7" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66930"
-        ElseIf ComboBox2.Text = "8" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 8" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66A38"
-        ElseIf ComboBox2.Text = "9" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 9" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66B40"
-        ElseIf ComboBox2.Text = "10" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+        ElseIf ComboBox2.Text = "WC 10" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x66C48"
             'USUM BS
         ElseIf ComboBox2.Text = "Normal" And ComboBox3.Text = "UltraSun/UltraMoon" Then
@@ -875,6 +1005,13 @@
             Label5.Text = "0x1435 | Data: 0x9"
         ElseIf ComboBox2.Text = "中文 (繁體)" And ComboBox3.Text = "UltraSun/UltraMoon" Then
             Label5.Text = "0x1435 | Data: 0xA"
+            'box 1
+        ElseIf ComboBox2.Text = "1" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x5200"
+        ElseIf ComboBox2.Text = "2" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x52E8"
+        ElseIf ComboBox2.Text = "3" And ComboBox3.Text = "UltraSun/UltraMoon" Then
+            Label5.Text = "0x53D0"
 #End Region
         End If
     End Sub
@@ -887,6 +1024,7 @@
             ComboBox1.Items.Add("Money")
             ComboBox1.Items.Add("Battle Points")
             ComboBox1.Items.Add("Festival Coins")
+            ComboBox1.Items.Add("BOX 1")
             ComboBox1.Enabled = True
             ComboBox1_SelectedIndexChanged(sender, e)
             ComboBox2_SelectedIndexChanged(sender, e)
@@ -899,6 +1037,7 @@
             ComboBox1.Items.Add("Money")
             ComboBox1.Items.Add("Battle Points")
             ComboBox1.Items.Add("Festival Coins")
+            ComboBox1.Items.Add("BOX 1")
             ComboBox1.Enabled = True
             ComboBox1_SelectedIndexChanged(sender, e)
             ComboBox2_SelectedIndexChanged(sender, e)
@@ -908,6 +1047,7 @@
             ComboBox1.Items.Add("Vivillon")
             ComboBox1.Items.Add("Language")
             ComboBox1.Items.Add("Money")
+            ComboBox1.Items.Add("BOX 1")
             ComboBox1.Enabled = True
             ComboBox1_SelectedIndexChanged(sender, e)
             ComboBox2_SelectedIndexChanged(sender, e)
@@ -917,40 +1057,47 @@
             ComboBox1.Items.Add("Vivillon")
             ComboBox1.Items.Add("Language")
             ComboBox1.Items.Add("Money")
+            ComboBox1.Items.Add("BOX 1")
             ComboBox1.Enabled = True
             ComboBox1_SelectedIndexChanged(sender, e)
             ComboBox2_SelectedIndexChanged(sender, e)
         ElseIf ComboBox3.Text = "Diamond/Pearl" Then
             Me.ComboBox1.Items.Clear()
             ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Items.Add("BOX 1")
             ComboBox1.Enabled = True
             ComboBox1_SelectedIndexChanged(sender, e)
             ComboBox2_SelectedIndexChanged(sender, e)
         ElseIf ComboBox3.Text = "Platinum" Then
             Me.ComboBox1.Items.Clear()
             ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Items.Add("BOX 1")
             ComboBox1.Enabled = True
             ComboBox1_SelectedIndexChanged(sender, e)
             ComboBox2_SelectedIndexChanged(sender, e)
         ElseIf ComboBox3.Text = "HeartGold/SoulSilver" Then
             Me.ComboBox1.Items.Clear()
             ComboBox1.Items.Add("Wonder Card Slot")
+            ComboBox1.Items.Add("BOX 1")
             ComboBox1.Enabled = True
             ComboBox1_SelectedIndexChanged(sender, e)
             ComboBox2_SelectedIndexChanged(sender, e)
-        ElseIf ComboBox3.Text = "----Gen 5----" Then
-            'Me.ComboBox1.Items.Clear()
-            'ComboBox1.Items.Add("Wonder Card Slot")
-            ComboBox1.Enabled = False
-            ComboBox2.Enabled = False
-            'ComboBox2_SelectedIndexChanged(sender, e)
-            Label5.Text = "Coming Soon: Requires Research"
+        ElseIf ComboBox3.Text = "Black/White" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("BOX 1")
+            ComboBox1.Enabled = True
+            ComboBox1_SelectedIndexChanged(sender, e)
+            ComboBox2_SelectedIndexChanged(sender, e)
+        ElseIf ComboBox3.Text = "Black 2/White 2" Then
+            Me.ComboBox1.Items.Clear()
+            ComboBox1.Items.Add("BOX 1")
+            ComboBox1.Enabled = True
+            ComboBox1_SelectedIndexChanged(sender, e)
+            ComboBox2_SelectedIndexChanged(sender, e)
 
         End If
         ComboBox1.Text = "-------Offsets-------"
-        If ComboBox3.Text <> "----Gen 5----" Then
-            Label5.Text = ""
-        End If
+        Label5.Text = ""
         ComboBox2.Enabled = False
         ComboBox1_SelectedIndexChanged(sender, e)
         ComboBox2_SelectedIndexChanged(sender, e)
@@ -967,6 +1114,12 @@
             End If
         ElseIf ComboBox1.Text = "Battle Styles" Or ComboBox1.Text = "Vivillon" Or ComboBox1.Text = "Language" Then
             TextBox4.Text = "1"
+        ElseIf ComboBox1.Text = "BOX 1" Then
+            If ComboBox3.Text = "Diamond/Pearl" Or ComboBox3.Text = "Platinum" Or ComboBox3.Text = "HeartGold/SoulSilver" Or ComboBox3.Text = "Black/White" Or ComboBox3.Text = "Black 2/White 2" Then
+                TextBox4.Text = "0x88"
+            Else
+                TextBox4.Text = "0xE8"
+            End If
         End If
         If Label5.Text.Contains("Data:") Then
             TextBox3.Text = dat(UBound(dat))

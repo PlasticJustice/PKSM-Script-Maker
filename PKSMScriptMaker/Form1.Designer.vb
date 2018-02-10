@@ -32,6 +32,7 @@ Partial Class Form1
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -53,7 +54,6 @@ Partial Class Form1
         Me.Button8 = New System.Windows.Forms.Button()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
@@ -67,8 +67,9 @@ Partial Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(230, 66)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Open WonderCard"
-        Me.ToolTip1.SetToolTip(Me.Button1, "Open a WonderCard" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "*.wc7full | *.wc6full | *.pcd")
+        Me.Button1.Text = "Open"
+        Me.ToolTip1.SetToolTip(Me.Button1, "Open a WonderCard (*.wc7full | *.wc6full | *.pcd)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Or an Encrypted PK File (*ek#)" &
+        "")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
@@ -78,8 +79,8 @@ Partial Class Form1
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(230, 66)
         Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Save WonderCard"
-        Me.ToolTip1.SetToolTip(Me.Button2, "Save the Converted WonderCard" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "*.wc7 | *.wc6 | *.pgt")
+        Me.Button2.Text = "Save"
+        Me.ToolTip1.SetToolTip(Me.Button2, "Save the Converted File" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "*.wc7 | *.wc6 | *.pgt | *.smk#")
         Me.Button2.UseVisualStyleBackColor = True
         '
         'RichTextBox1
@@ -136,6 +137,16 @@ Partial Class Form1
         Me.TabPage1.Size = New System.Drawing.Size(283, 239)
         Me.TabPage1.TabIndex = 1
         Me.TabPage1.Text = "PKSM Script Maker"
+        '
+        'ComboBox4
+        '
+        Me.ComboBox4.FormattingEnabled = True
+        Me.ComboBox4.Items.AddRange(New Object() {"Diamond/Pearl", "Platinum", "HeartGold/SoulSilver", "Black/White", "Black 2/White 2", "X/Y", "OmegaRuby/AlphaSapphire", "Sun/Moon", "UltraSun/UltraMoon"})
+        Me.ComboBox4.Location = New System.Drawing.Point(11, 206)
+        Me.ComboBox4.Name = "ComboBox4"
+        Me.ComboBox4.Size = New System.Drawing.Size(189, 21)
+        Me.ComboBox4.TabIndex = 10
+        Me.ComboBox4.Text = "--Game--"
         '
         'Label4
         '
@@ -256,7 +267,7 @@ Partial Class Form1
         'ComboBox3
         '
         Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Items.AddRange(New Object() {"Diamond/Pearl", "Platinum", "HeartGold/SoulSilver", "----Gen 5----", "X/Y", "OmegaRuby/AlphaSapphire", "Sun/Moon", "UltraSun/UltraMoon"})
+        Me.ComboBox3.Items.AddRange(New Object() {"Diamond/Pearl", "Platinum", "HeartGold/SoulSilver", "Black/White", "Black 2/White 2", "X/Y", "OmegaRuby/AlphaSapphire", "Sun/Moon", "UltraSun/UltraMoon"})
         Me.ComboBox3.Location = New System.Drawing.Point(70, 10)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(151, 21)
@@ -308,8 +319,9 @@ Partial Class Form1
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(283, 239)
         Me.TabPage2.TabIndex = 0
-        Me.TabPage2.Text = "WonderCard Converter"
-        Me.ToolTip1.SetToolTip(Me.TabPage2, "Converts WonderCards" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wc7full --> wc7" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wc6full --> wc6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "pcd --> pgt")
+        Me.TabPage2.Text = "Converter"
+        Me.ToolTip1.SetToolTip(Me.TabPage2, "Converts WonderCards" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wc7full --> wc7" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wc6full --> wc6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "pcd --> pgt" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Converts E" &
+        "ncrypted PK Files" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ek# --> smk#")
         '
         'Button8
         '
@@ -319,16 +331,6 @@ Partial Class Form1
         Me.Button8.TabIndex = 4
         Me.Button8.Text = " "
         Me.Button8.UseVisualStyleBackColor = True
-        '
-        'ComboBox4
-        '
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Items.AddRange(New Object() {"Diamond/Pearl", "Platinum", "HeartGold/SoulSilver", "Black/White", "Black 2/White 2", "X/Y", "OmegaRuby/AlphaSapphire", "Sun/Moon", "UltraSun/UltraMoon"})
-        Me.ComboBox4.Location = New System.Drawing.Point(11, 206)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(189, 21)
-        Me.ComboBox4.TabIndex = 10
-        Me.ComboBox4.Text = "--Game--"
         '
         'Form1
         '

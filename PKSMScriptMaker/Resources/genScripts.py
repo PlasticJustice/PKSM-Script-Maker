@@ -53,6 +53,10 @@ def main(args):
 		os.remove("g5wc.pgf")
 	if os.path.isfile("g4wc.pgt"):
 		os.remove("g4wc.pgt")
+	if os.path.isfile("binary.bin"):
+		os.remove("binary.bin")
+	if os.path.isfile("text.txt"):
+		os.remove("text.txt")
 	
 def generate(game):
 	with open(os.path.join("scripts%s.txt" % game)) as pksmArgFile:
