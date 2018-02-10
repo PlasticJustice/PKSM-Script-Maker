@@ -373,6 +373,14 @@
                     wcfn = "binary.bin"
                 ElseIf dex = "txt" Then
                     wcfn = "text.txt"
+                ElseIf dex = "smk4" Then
+                    wcfn = "pkm4.smk4"
+                ElseIf dex = "smk5" Then
+                    wcfn = "pkm5.smk5"
+                ElseIf dex = "smk6" Then
+                    wcfn = "pkm6.smk6"
+                ElseIf dex = "smk7" Then
+                    wcfn = "pkm7.smk7"
                 End If
                 If System.IO.File.Exists(pathexe & "\" & wcfn) Then
                 Else

@@ -57,6 +57,14 @@ def main(args):
 		os.remove("binary.bin")
 	if os.path.isfile("text.txt"):
 		os.remove("text.txt")
+	if os.path.isfile("pkm4.smk4"):
+		os.remove("pkm4.smk4")
+	if os.path.isfile("pkm5.smk5"):
+		os.remove("pkm5.smk5")
+	if os.path.isfile("pkm6.smk6"):
+		os.remove("pkm6.smk6")
+	if os.path.isfile("pkm7.smk7"):
+		os.remove("pkm7.smk7")		
 	
 def generate(game):
 	with open(os.path.join("scripts%s.txt" % game)) as pksmArgFile:
