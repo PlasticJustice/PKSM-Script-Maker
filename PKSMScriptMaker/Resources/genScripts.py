@@ -1,23 +1,59 @@
 #!/usr/bin/env python3
 import shlex, PKSMScript, sys, glob, shutil, os
 
-games = ["PSM"]
+games = ["PSM", "USUM", "SM", "ORAS", "XY", "B2W2", "BW", "HGSS", "PT", "DP"]
 
 def main(args):
-	shutil.rmtree("output", True)
-	os.mkdir("output")
-	for game in games:
-		generate(game)
-		
-		scriptFiles = glob.glob("*.pksm")
-		for pksmFile in scriptFiles:
-			shutil.move(pksmFile,"output")
-	os.remove("scriptsPSM.txt")	
+	if os.path.isdir("scripts"):
+		for game in games:
+			if os.path.isfile("scripts%s.txt" % game):
+				generate(game)
+				if game == "PSM":
+					scriptFiles = glob.glob("*.pksm")
+					for pksmFile in scriptFiles:
+						shutil.move(pksmFile,"scripts")
+					os.remove("scriptsPSM.txt")
+				else:
+					scriptFiles = glob.glob("*.pksm")
+					for pksmFile in scriptFiles:
+						if os.path.isdir("scripts\%s" % game.lower()):
+							shutil.move(pksmFile, "scripts\%s" % game.lower())
+						else:
+							os.mkdir(game.lower())
+							shutil.move(pksmFile,game.lower())
+							shutil.move(game.lower(), "scripts")
+					
+					os.remove("scripts%s.txt" % game)
+	else:
+		os.mkdir("scripts")
+		for game in games:
+			if os.path.isfile("scripts%s.txt" % game):
+				generate(game)
+				if game == "PSM":
+					scriptFiles = glob.glob("*.pksm")
+					for pksmFile in scriptFiles:
+						shutil.move(pksmFile,"scripts")
+					os.remove("scriptsPSM.txt")
+				else:
+					os.mkdir(game.lower())
+					scriptFiles = glob.glob("*.pksm")
+					for pksmFile in scriptFiles:
+						shutil.move(pksmFile,game.lower())
+					shutil.move(game.lower(), "scripts")
+					os.remove("scripts%s.txt" % game)
 	os.remove("PKSMScript.py")
 	os.remove("genScripts.py")
-	shutil.rmtree("__pycache__", True)
+	if os.path.isdir("__pycache__"):
+		shutil.rmtree("__pycache__", True)
+	if os.path.isfile("g7wc.wc7"):
+		os.remove("g7wc.wc7")
+	if os.path.isfile("g6wc.wc6"):
+		os.remove("g6wc.wc6")
+	if os.path.isfile("g5wc.pgf"):
+		os.remove("g5wc.pgf")
+	if os.path.isfile("g4wc.pgt"):
+		os.remove("g4wc.pgt")
 	
-
 def generate(game):
 	with open(os.path.join("scripts%s.txt" % game)) as pksmArgFile:
 		for line in pksmArgFile:

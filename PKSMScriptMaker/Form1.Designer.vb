@@ -53,6 +53,7 @@ Partial Class Form1
         Me.Button8 = New System.Windows.Forms.Button()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
@@ -118,6 +119,7 @@ Partial Class Form1
         '
         Me.TabPage1.AllowDrop = True
         Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage1.Controls.Add(Me.ComboBox4)
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.TextBox4)
         Me.TabPage1.Controls.Add(Me.Button5)
@@ -153,7 +155,7 @@ Partial Class Form1
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(103, 204)
+        Me.Button5.Location = New System.Drawing.Point(206, 204)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(63, 23)
         Me.Button5.TabIndex = 7
@@ -318,6 +320,16 @@ Partial Class Form1
         Me.Button8.Text = " "
         Me.Button8.UseVisualStyleBackColor = True
         '
+        'ComboBox4
+        '
+        Me.ComboBox4.FormattingEnabled = True
+        Me.ComboBox4.Items.AddRange(New Object() {"Diamond/Pearl", "Platinum", "HeartGold/SoulSilver", "Black/White", "Black 2/White 2", "X/Y", "OmegaRuby/AlphaSapphire", "Sun/Moon", "UltraSun/UltraMoon"})
+        Me.ComboBox4.Location = New System.Drawing.Point(11, 206)
+        Me.ComboBox4.Name = "ComboBox4"
+        Me.ComboBox4.Size = New System.Drawing.Size(189, 21)
+        Me.ComboBox4.TabIndex = 10
+        Me.ComboBox4.Text = "--Game--"
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -366,4 +378,5 @@ Partial Class Form1
     Friend WithEvents Button7 As Button
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents Button8 As Button
+    Friend WithEvents ComboBox4 As ComboBox
 End Class

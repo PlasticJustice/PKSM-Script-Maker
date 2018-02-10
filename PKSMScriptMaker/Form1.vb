@@ -12,6 +12,8 @@
 
     Dim ext() As String
     Dim type As Integer = 0
+
+    Dim gt As String = "PSM"
 #End Region
 
 #Region "System Menu"
@@ -294,16 +296,27 @@
             If data(3).Contains(":\") Then
                 Dim da() As String = data(3).Split("\")
                 da(UBound(da)) = da(UBound(da)).Replace(" ", "_")
-                If System.IO.File.Exists(pathexe & "\" & da(UBound(da))) Then
-                Else
-                    System.IO.File.Copy(data(3), pathexe & "\" & da(UBound(da)))
+                Dim ex() As String = da(UBound(da)).Split(".")
+                Dim wcfn As String
+                If ex(UBound(ex)) = "wc7" Then
+                    wcfn = "g7wc.wc7"
+                ElseIf ex(UBound(ex)) = "wc6" Then
+                    wcfn = "g6wc.wc6"
+                ElseIf ex(UBound(ex)) = "pgf" Then
+                    wcfn = "g5wc.pgf"
+                ElseIf ex(UBound(ex)) = "pgt" Then
+                    wcfn = "g4wc.pgt"
                 End If
-                Dim d2 As String = da(UBound(da))
+                If System.IO.File.Exists(pathexe & "\" & wcfn) Then
+                Else
+                    System.IO.File.Copy(data(3), pathexe & "\" & wcfn)
+                End If
+                Dim d2 As String = wcfn
                 sm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & d2 & """" & " 1"
             Else
                 sm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1"
             End If
-            System.IO.File.WriteAllText(pathexe & "\scriptsPSM.txt", sm)
+            System.IO.File.WriteAllText(pathexe & "\scripts" & gt & ".txt", sm)
             'My.Computer.FileSystem.CreateDirectory(pathexe & "\output")
             Process.Start(pathexe & "\genScripts.py")
             System.Threading.Thread.Sleep(1000)
@@ -325,6 +338,29 @@
     Private Sub TabPage1_DragEnter(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles TabPage1.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.Copy
+        End If
+    End Sub
+    Private Sub ComboBox4_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox4.SelectedIndexChanged
+        If ComboBox4.Text = "--Game--" Then
+            gt = "PSM"
+        ElseIf ComboBox4.Text = "Diamond/Pearl" Then
+            gt = "DP"
+        ElseIf ComboBox4.Text = "Platinum" Then
+            gt = "PT"
+        ElseIf ComboBox4.Text = "HeartGold/SoulSilver" Then
+            gt = "HGSS"
+        ElseIf ComboBox4.Text = "Black/White" Then
+            gt = "BW"
+        ElseIf ComboBox4.Text = "Black 2/White 2" Then
+            gt = "B2W2"
+        ElseIf ComboBox4.Text = "X/Y" Then
+            gt = "XY"
+        ElseIf ComboBox4.Text = "OmegaRuby/AlphaSapphire" Then
+            gt = "ORAS"
+        ElseIf ComboBox4.Text = "Sun/Moon" Then
+            gt = "SM"
+        ElseIf ComboBox4.Text = "UltraSun/UltraMoon" Then
+            gt = "USUM"
         End If
     End Sub
 #End Region

@@ -27,26 +27,21 @@ PKSMScriptMaker
   Looks up a localized string similar to #!/usr/bin/env python3
 import shlex, PKSMScript, sys, glob, shutil, os
 
-games = [&quot;PSM&quot;]
+games = [&quot;PSM&quot;, &quot;USUM&quot;, &quot;SM&quot;, &quot;ORAS&quot;, &quot;XY&quot;, &quot;B2W2&quot;, &quot;BW&quot;, &quot;HGSS&quot;, &quot;PT&quot;, &quot;DP&quot;]
 
 def main(args):
-	shutil.rmtree(&quot;output&quot;, True)
-	os.mkdir(&quot;output&quot;)
-	for game in games:
-		generate(game)
-		
-		scriptFiles = glob.glob(&quot;*.pksm&quot;)
-		for pksmFile in scriptFiles:
-			shutil.move(pksmFile,&quot;output&quot;)
-	os.remove(&quot;scriptsPSM.txt&quot;)	
-	os.remove(&quot;PKSMScript.py&quot;)
-	os.remove(&quot;genScripts.py&quot;)
-	shutil.rmtree(&quot;__pycache__&quot;, True)
-	
-
-def generate(game):
-	with open(os.path.join(&quot;scripts%s.txt&quot; % game)) as pksmArgFile:
-		for [rest of string was truncated]&quot;;.
+	if os.path.isdir(&quot;scripts&quot;):
+		for game in games:
+			if os.path.isfile(&quot;scripts%s.txt&quot; % game):
+				generate(game)
+				if game == &quot;PSM&quot;:
+					scriptFiles = glob.glob(&quot;*.pksm&quot;)
+					for pksmFile in scriptFiles:
+						shutil.move(pksmFile,&quot;scripts&quot;)
+					os.remove(&quot;scriptsPSM.txt&quot;)
+				else:
+					scriptFiles = glob.glob(&quot;*.pksm&quot;)
+					for pksmF [rest of string was truncated]&quot;;.
 </summary>
 </member>
 <member name="P:PKSMScriptMaker.My.Resources.Resources.PKSMScript">
