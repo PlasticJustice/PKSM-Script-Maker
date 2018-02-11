@@ -11,13 +11,21 @@ def main(args):
 				if game == "PSM":
 					scriptFiles = glob.glob("*.pksm")
 					for pksmFile in scriptFiles:
-						shutil.move(pksmFile,"scripts")
+						if os.path.isfile("scripts\%s" % pksmFile):
+							os.remove("scripts\%s" % pksmFile)
+							shutil.move(pksmFile,"scripts")
+						else:
+							shutil.move(pksmFile,"scripts")
 					os.remove("scriptsPSM.txt")
 				else:
 					scriptFiles = glob.glob("*.pksm")
 					for pksmFile in scriptFiles:
 						if os.path.isdir("scripts\%s" % game.lower()):
-							shutil.move(pksmFile, "scripts\%s" % game.lower())
+							if os.path.isfile("scripts\%s\%s" % (game.lower(), pksmFile)):
+								os.remove("scripts\%s\%s" % (game.lower(), pksmFile))
+								shutil.move(pksmFile, "scripts\%s" % game.lower())
+							else:
+								shutil.move(pksmFile, "scripts\%s" % game.lower())
 						else:
 							os.mkdir(game.lower())
 							shutil.move(pksmFile,game.lower())
@@ -41,6 +49,7 @@ def main(args):
 						shutil.move(pksmFile,game.lower())
 					shutil.move(game.lower(), "scripts")
 					os.remove("scripts%s.txt" % game)
+
 	os.remove("PKSMScript.py")
 	os.remove("genScripts.py")
 	if os.path.isdir("__pycache__"):

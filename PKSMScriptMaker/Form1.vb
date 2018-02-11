@@ -392,8 +392,16 @@
                 sm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1"
             End If
             System.IO.File.WriteAllText(pathexe & "\scripts" & gt & ".txt", sm)
-            Process.Start(pathexe & "\genScripts.py")
+            Dim gs As New ProcessStartInfo(pathexe & "\genScripts.py")
+            gs.WindowStyle = ProcessWindowStyle.Hidden
+            Process.Start(gs)
             System.Threading.Thread.Sleep(1000)
+            'TextBox1.Text = Nothing
+            'TextBox2.Text = Nothing
+            'TextBox3.Text = Nothing
+            'TextBox4.Text = Nothing
+            'ComboBox4.Text = "--Game--"
+            'ComboBox4_SelectedIndexChanged(sender, e)
             MsgBox("Done", 0)
         End If
     End Sub
@@ -1135,6 +1143,8 @@
         If ComboBox1.Text = "Money" Or ComboBox1.Text = "Battle Points" Or ComboBox1.Text = "Festival Coins" Then
             TextBox4.Text = "4"
         End If
+        ComboBox4.Text = ComboBox3.Text
+        ComboBox4_SelectedIndexChanged(sender, e)
         TabControl1.TabIndex += 2
     End Sub
     Private Sub Label5_TextChanged(sender As Object, e As EventArgs) Handles Label5.TextChanged
