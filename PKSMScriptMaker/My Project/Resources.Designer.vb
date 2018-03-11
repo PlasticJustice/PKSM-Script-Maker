@@ -74,11 +74,10 @@ Namespace My.Resources
         '''				if game == &quot;PSM&quot;:
         '''					scriptFiles = glob.glob(&quot;*.pksm&quot;)
         '''					for pksmFile in scriptFiles:
-        '''						shutil.move(pksmFile,&quot;scripts&quot;)
-        '''					os.remove(&quot;scriptsPSM.txt&quot;)
-        '''				else:
-        '''					scriptFiles = glob.glob(&quot;*.pksm&quot;)
-        '''					for pksmF [rest of string was truncated]&quot;;.
+        '''						if os.path.isfile(&quot;scripts\%s&quot; % pksmFile):
+        '''							os.remove(&quot;scripts\%s&quot; % pksmFile)
+        '''							shutil.move(pksmFile,&quot;scripts&quot;)
+        '''			 [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property genScripts() As String
             Get
