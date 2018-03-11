@@ -14,9 +14,20 @@
             If System.IO.File.Exists(prog) Then
                 System.IO.File.Delete(prog)
             End If
+            If My.Settings.ChkUpd = True Then
+                Dim objShell = CreateObject("WScript.Shell")
+                Dim X As Integer
+                X = objShell.Popup("You are running the latest version.", 5, "", vbOKOnly)
+                Select Case X
+                    Case vbOK
+
+                    Case Else
+
+                End Select
+            End If
             Close()
-        Else
-            Dim objShell = CreateObject("WScript.Shell")
+            Else
+                Dim objShell = CreateObject("WScript.Shell")
             Dim X As Integer
             X = objShell.Popup("The program is updating, ignore the errors and please wait.", 5, "", vbOKOnly)
             Select Case X

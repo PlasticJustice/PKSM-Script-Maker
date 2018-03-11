@@ -44,7 +44,6 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -233,7 +232,6 @@ Partial Class Form1
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage3.Controls.Add(Me.Button7)
         Me.TabPage3.Controls.Add(Me.Button6)
         Me.TabPage3.Controls.Add(Me.ComboBox3)
         Me.TabPage3.Controls.Add(Me.Label5)
@@ -244,15 +242,6 @@ Partial Class Form1
         Me.TabPage3.Size = New System.Drawing.Size(283, 239)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Script Info"
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(211, 214)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(69, 23)
-        Me.Button7.TabIndex = 5
-        Me.Button7.Text = "About"
-        Me.Button7.UseVisualStyleBackColor = True
         '
         'Button6
         '
@@ -268,9 +257,9 @@ Partial Class Form1
         '
         Me.ComboBox3.FormattingEnabled = True
         Me.ComboBox3.Items.AddRange(New Object() {"Diamond/Pearl", "Platinum", "HeartGold/SoulSilver", "Black/White", "Black 2/White 2", "X/Y", "OmegaRuby/AlphaSapphire", "Sun/Moon", "UltraSun/UltraMoon"})
-        Me.ComboBox3.Location = New System.Drawing.Point(70, 10)
+        Me.ComboBox3.Location = New System.Drawing.Point(65, 10)
         Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(151, 21)
+        Me.ComboBox3.Size = New System.Drawing.Size(159, 21)
         Me.ComboBox3.TabIndex = 3
         Me.ComboBox3.Text = "--Game--"
         '
@@ -377,7 +366,6 @@ Partial Class Form1
     Friend WithEvents Label5 As Label
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents Button8 As Button
     Friend WithEvents ComboBox4 As ComboBox
