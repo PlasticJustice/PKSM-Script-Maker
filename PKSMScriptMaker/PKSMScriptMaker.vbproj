@@ -130,6 +130,12 @@
     <Compile Include="CustomMessageBox.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dropdown.designer.vb">
+      <DependentUpon>Dropdown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dropdown.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomMessageBox.resx">
       <DependentUpon>CustomMessageBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dropdown.resx">
+      <DependentUpon>Dropdown.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

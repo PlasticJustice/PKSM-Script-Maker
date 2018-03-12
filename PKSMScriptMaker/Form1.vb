@@ -101,6 +101,27 @@
         End If
         Return Ans
     End Function 'custom MsgBox
+    Private Function DropdownB(ByVal button1Name As String, ByVal button2name As String, ByVal labeltext As String, ByVal dropdowntext As String, ByVal options As String(), ByVal head As String)
+        Dim msg As New LangMessageBox(button1Name, button2name, labeltext, dropdowntext, options, head)
+        Dim result = msg.ShowDialog()
+        Dim Ans As String
+        If result = Windows.Forms.DialogResult.Yes Then
+            'user clicked "B1"
+            Ans = My.Settings.ddres
+            My.Settings.ddres = Nothing
+        ElseIf result = Windows.Forms.DialogResult.No Then
+            'user clicked "B2"
+            Ans = Nothing
+        ElseIf result = Windows.Forms.DialogResult.Cancel Then
+            'user clicked "B3"
+            Ans = Nothing
+        Else
+            'user closed the window without clicking a button
+            Ans = Nothing
+            Close()
+        End If
+        Return Ans
+    End Function 'custom MsgBox
     Public Sub checkUpdate()
         Dim ver As String = My.Application.Info.Version.ToString
 #If DEBUG Then
@@ -819,8 +840,6 @@
         If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Then
             MsgBox("Missing Value(s)", MsgBoxStyle.OkOnly)
         Else
-            System.IO.File.WriteAllText(prog, My.Resources.PKSMScript)
-            System.IO.File.WriteAllText(progG, My.Resources.genScripts)
             ' web.DownloadFileAsync(New Uri("https://github.com/BernardoGiordano/PKSM-Tools/raw/master/PKSMScript/PKSMScript.py"), prog)
             data(0) = TextBox1.Text
             If TextBox2.Text.Contains("0x") Then
@@ -866,9 +885,44 @@
                     System.IO.File.Copy(data(3), pathexe & "\" & wcfn)
                 End If
                 scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & wcfn & """" & " 1"
+            ElseIf data(3).Contains("://") Then
+                Dim dex As String = DropdownB("Confirm", "Cancel", "What's the file's extension?", "Type", {"pgt", "pgf", "wc6", "wc7", "smk4", "smk5", "smk6", "smk7", "bin", "txt"}, "File Type?")
+                Dim wcfn As String = ""
+                If dex = "wc7" Then
+                    wcfn = "g7wc.wc7"
+                ElseIf dex = "wc6" Then
+                    wcfn = "g6wc.wc6"
+                ElseIf dex = "pgf" Then
+                    wcfn = "g5wc.pgf"
+                ElseIf dex = "pgt" Then
+                    wcfn = "g4wc.pgt"
+                ElseIf dex = "bin" Then
+                    wcfn = "binary.bin"
+                ElseIf dex = "txt" Then
+                    wcfn = "text.txt"
+                ElseIf dex = "smk4" Then
+                    wcfn = "pkm4.smk4"
+                ElseIf dex = "smk5" Then
+                    wcfn = "pkm5.smk5"
+                ElseIf dex = "smk6" Then
+                    wcfn = "pkm6.smk6"
+                ElseIf dex = "smk7" Then
+                    wcfn = "pkm7.smk7"
+                End If
+                Dim dlfile As String = pathexe & "\" & wcfn
+
+                If System.IO.File.Exists(pathexe & "\" & wcfn) Then
+                Else
+                    'web.DownloadFile(New Uri(data(3)), dlfile)
+                    'web.DownloadDataAsync(New Uri(data(3)), dlfile)
+                    'My.Computer.Network.DownloadFile(data(3), dlfile)
+                End If
+                scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & wcfn & """" & " 1"
             Else
                 scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1"
             End If
+            System.IO.File.WriteAllText(prog, My.Resources.PKSMScript)
+            System.IO.File.WriteAllText(progG, My.Resources.genScripts)
             System.IO.File.WriteAllText(pathexe & "\scripts" & gt & ".txt", scm)
             Dim gs As New ProcessStartInfo(pathexe & "\genScripts.py")
             gs.WindowStyle = ProcessWindowStyle.Hidden
