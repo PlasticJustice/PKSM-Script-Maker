@@ -25,6 +25,9 @@
     Dim usum As String = "UltraSun/UltraMoon"
 
     Dim wcnum As Integer
+    Dim boxlast As String
+    Dim boxnum As Integer
+    Dim boxes As Integer
 #End Region
 
 #Region "System Menu"
@@ -913,7 +916,7 @@
 
                 If System.IO.File.Exists(pathexe & "\" & wcfn) Then
                 Else
-                    'web.DownloadFile(New Uri(data(3)), dlfile)
+                    web.DownloadFile(New Uri(data(3)), dlfile)
                     'web.DownloadDataAsync(New Uri(data(3)), dlfile)
                     'My.Computer.Network.DownloadFile(data(3), dlfile)
                 End If
@@ -1069,10 +1072,18 @@
                     ComboBox2.Items.Add("中文 (简体)")
                     ComboBox2.Items.Add("中文 (繁體)")
                 End If
-            Case "BOX 1"
+            Case "BOX 1", "BOX 2", "BOX 3", "BOX 4", "BOX 5", "BOX 6", "BOX 7", "BOX 8", "BOX 9", "BOX 10", "BOX 11", "BOX 12", "BOX 13", "BOX 14", "BOX 15", "BOX 16", "BOX 17", "BOX 18", "BOX 19", "BOX 20", "BOX 21", "BOX 22", "BOX 23", "BOX 24", "BOX 25", "BOX 26", "BOX 27", "BOX 28", "BOX 29", "BOX 30", "BOX 31", "BOX 32"
                 ComboBox2.Enabled = True
                 ComboBox2.Text = "--Slot #--"
                 Me.ComboBox2.Items.Clear()
+                If ComboBox1.Text.Length = 5 Then
+                    boxlast = ComboBox1.Text.Last
+                    boxnum = Val(boxlast)
+                ElseIf ComboBox1.Text.Length = 6 Then
+                    boxlast = ComboBox1.Text.Replace("BOX ", "")
+                    Dim boxdiv() As Char = boxlast.ToCharArray
+                    boxnum = Val(boxlast(0)) & Val(boxlast(1))
+                End If
                 For i = 1 To 30 Step 1
                     ComboBox2.Items.Add("Slot " & i)
                 Next i
@@ -1090,9 +1101,9 @@
                     Dim v As Integer = (&H4A7FC + (cb2 * &H104))
                     Label5.Text = "0x" & Hex(v)
 
-                    'BOX1
-                ElseIf ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&HC104 + (cb2 * &H88))
+                    'PC
+                ElseIf ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&HC104 + ((((boxnum - 1) * 30) + cb2) * &H88))
                     Label5.Text = "0x" & Hex(v)
 
                 End If
@@ -1103,9 +1114,9 @@
                     Dim v As Integer = (&H4B5C0 + (cb2 * &H104))
                     Label5.Text = "0x" & Hex(v)
 
-                    'BOX1
-                ElseIf ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&HCF30 + (cb2 * &H88))
+                    'PC
+                ElseIf ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&HCF30 + ((((boxnum - 1) * 30) + cb2) * &H88))
                     Label5.Text = "0x" & Hex(v)
 
                 End If
@@ -1116,24 +1127,24 @@
                     Dim v As Integer = (&H9E3C + (cb2 * &H104))
                     Label5.Text = "0x" & Hex(v)
 
-                    'BOX1
-                ElseIf ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&HF700 + (cb2 * &H88))
+                    'PC
+                ElseIf ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&HF700 + ((((boxnum - 1) * 30) + cb2) * &H88))
                     Label5.Text = "0x" & Hex(v)
 
                 End If
             Case bw
                 Dim cb2 As Integer = ComboBox2.SelectedIndex
-                'BOX1
-                If ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&H400 + (cb2 * &H88))
+                'PC
+                If ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&H400 + ((((boxnum - 1) * 30) + cb2) * &H88))
                     Label5.Text = "0x" & Hex(v)
                 End If
             Case b2w2
                 Dim cb2 As Integer = ComboBox2.SelectedIndex
-                'BOX1
-                If ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&H400 + (cb2 * &H88))
+                'PC
+                If ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&H400 + ((((boxnum - 1) * 30) + cb2) * &H88))
                     Label5.Text = "0x" & Hex(v)
                 End If
             Case xy
@@ -1142,9 +1153,9 @@
                     Dim v As Integer = (&H1BD00 + (cb2 * &H108))
                     Label5.Text = "0x" & Hex(v)
 
-                    'BOX1
-                ElseIf ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&H22600 + (cb2 * &HE8))
+                    'PC
+                ElseIf ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&H22600 + ((((boxnum - 1) * 30) + cb2) * &HE8))
                     Label5.Text = "0x" & Hex(v)
 
                     'Viv
@@ -1211,9 +1222,9 @@
                     Dim v As Integer = (&H1CD00 + (cb2 * &H108))
                     Label5.Text = "0x" & Hex(v)
 
-                    'BOX1
-                ElseIf ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&H33000 + (cb2 * &HE8))
+                    'PC
+                ElseIf ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&H33000 + ((((boxnum - 1) * 30) + cb2) * &HE8))
                     Label5.Text = "0x" & Hex(v)
 
                     'ORAS Viv
@@ -1280,9 +1291,9 @@
                     Dim v As Integer = (&H65D00 + (cb2 * &H108))
                     Label5.Text = "0x" & Hex(v)
 
-                    'BOX1
-                ElseIf ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&H4E00 + (cb2 * &HE8))
+                    'PC
+                ElseIf ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&H4E00 + ((((boxnum - 1) * 30) + cb2) * &HE8))
                     Label5.Text = "0x" & Hex(v)
 
                     'SM Viv
@@ -1353,9 +1364,9 @@
                     Dim v As Integer = (&H66300 + (cb2 * &H108))
                     Label5.Text = "0x" & Hex(v)
 
-                    'BOX1
-                ElseIf ComboBox1.Text = "BOX 1" Then
-                    Dim v As Integer = (&H5200 + (cb2 * &HE8))
+                    'PC
+                ElseIf ComboBox1.Text = "BOX " & boxnum Then
+                    Dim v As Integer = (&H5200 + ((((boxnum - 1) * 30) + cb2) * &HE8))
                     Label5.Text = "0x" & Hex(v)
 
                     'USUM BS
@@ -1445,66 +1456,74 @@
         Select Case ComboBox3.Text
             Case dp
                 wcnum = 3
+                boxes = 18
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case pt
                 wcnum = 3
+                boxes = 18
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case hgss
                 wcnum = 3
+                boxes = 18
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case bw
                 wcnum = 12
+                boxes = 24
                 Me.ComboBox1.Items.Clear()
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case b2w2
                 wcnum = 12
+                boxes = 24
                 Me.ComboBox1.Items.Clear()
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case xy
                 wcnum = 24
+                boxes = 31
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
                 ComboBox1.Items.Add("Vivillon")
                 ComboBox1.Items.Add("Language")
                 ComboBox1.Items.Add("Money")
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case oras
                 wcnum = 24
+                boxes = 31
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
                 ComboBox1.Items.Add("Vivillon")
                 ComboBox1.Items.Add("Language")
                 ComboBox1.Items.Add("Money")
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case sm
                 wcnum = 48
+                boxes = 32
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
                 ComboBox1.Items.Add("Vivillon")
@@ -1512,12 +1531,13 @@
                 ComboBox1.Items.Add("Money")
                 ComboBox1.Items.Add("Battle Points")
                 ComboBox1.Items.Add("Festival Coins")
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case usum
                 wcnum = 48
+                boxes = 32
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
                 ComboBox1.Items.Add("Battle Styles")
@@ -1526,7 +1546,8 @@
                 ComboBox1.Items.Add("Money")
                 ComboBox1.Items.Add("Battle Points")
                 ComboBox1.Items.Add("Festival Coins")
-                ComboBox1.Items.Add("BOX 1")
+                boxy()
+                'ComboBox1.Items.Add("BOX 2")
                 ComboBox1.Enabled = True
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
@@ -1538,6 +1559,11 @@
         ComboBox2.Enabled = False
         ComboBox1_SelectedIndexChanged(sender, e)
         ComboBox2_SelectedIndexChanged(sender, e)
+    End Sub
+    Private Sub boxy()
+        For i = 1 To boxes Step 1
+            ComboBox1.Items.Add("BOX " & i)
+        Next i
     End Sub
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Dim dat() = Label5.Text.Split(" ")
