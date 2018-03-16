@@ -7,11 +7,17 @@
     Dim progG As String = pathexe & "\genScripts.py"
     Dim scm As String
     Dim data(3) As String
+    Dim clicks As Integer
+    Dim scripts As Integer
 
     Dim stat As Integer = 0
 
     Dim ext() As String
     Dim type As Integer = 0
+    Dim dex As String
+    Dim wcfn As String
+    Dim t As String
+    Dim webfile As String
 
     Dim gt As String = "PSM"
     Dim dp As String = "Diamond/Pearl"
@@ -173,9 +179,11 @@
         Next i
         Return (bOutput)
     End Function
-    Private Sub sav()
-        Dim ext() As String = OpenFileDialog1.FileName.Split(".")
-        Dim Fn() As String = OpenFileDialog1.FileName.Split("\")
+    Private Sub sav(ByVal myFile As String)
+        'Dim ext() As String = OpenFileDialog1.FileName.Split(".")
+        'Dim Fn() As String = OpenFileDialog1.FileName.Split("\")
+        Dim ext() As String = myFile.Split(".")
+        Dim Fn() As String = myFile.Split("\")
         Dim Fn2() As String = Fn(UBound(Fn)).Split(".")
         Fn2(UBound(Fn2)) = Fn2(UBound(Fn2)).ToLower
         Dim Fn3 As String = ""
@@ -199,6 +207,41 @@
             Fn4 = Fn3.Replace("ek4", ".smk4")
         End If
         SaveFileDialog1.FileName = Fn4
+    End Sub
+    Private Sub open(ByVal myFile As String)
+        'OpenFileDialog1.Filter = "All Supported Files (FULLWonderCards, *.ek#)|*.wc7full;*.wc6full;*.pcd;*.ek7;*.ek6;*.ek5;*.ek4|WonderCards (*.wc7full, *.wc6full, *.pcd)|*.wc7full;*.wc6full;*.pcd|Encrypted PK Files (*.ek#)|*.ek7;*.ek6;*.ek5;*.ek4;*.ek3;*.ek2;*.ek1|All files (*.*)|*.*"
+        'OpenFileDialog1.ShowDialog()
+        'Dim myFile As String = OpenFileDialog1.FileName
+        Dim ext() As String = myFile.Split(".")
+
+        If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Or ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Or ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Or ext(UBound(ext)) = "ek7" Or ext(UBound(ext)) = "EK7" Or ext(UBound(ext)) = "ek6" Or ext(UBound(ext)) = "EK6" Or ext(UBound(ext)) = "ek4" Or ext(UBound(ext)) = "EK4" Or ext(UBound(ext)) = "ek5" Or ext(UBound(ext)) = "EK5" Then 'Or ext(UBound(ext)) = "pk5" Then
+            Dim myBytes As Byte() = My.Computer.FileSystem.ReadAllBytes(myFile)
+            Dim txtTemp As New System.Text.StringBuilder()
+            For Each myByte As Byte In myBytes
+                txtTemp.Append(myByte.ToString("X2"))
+            Next
+            RichTextBox1.Text = txtTemp.ToString()
+
+            If ext(UBound(ext)) = "wc7full" Or ext(UBound(ext)) = "WC7FULL" Or ext(UBound(ext)) = "wc6full" Or ext(UBound(ext)) = "WC6FULL" Then
+                type = 1
+            ElseIf ext(UBound(ext)) = "pcd" Or ext(UBound(ext)) = "PCD" Then
+                type = 2
+            ElseIf ext(UBound(ext)) = "ek7" Or ext(UBound(ext)) = "EK7" Or ext(UBound(ext)) = "ek6" Or ext(UBound(ext)) = "EK6" Then
+                type = 3
+            ElseIf ext(UBound(ext)) = "ek4" Or ext(UBound(ext)) = "EK4" Then
+                type = 4
+            ElseIf ext(UBound(ext)) = "ek5" Or ext(UBound(ext)) = "EK5" Then
+                type = 5
+                'ElseIf ext(UBound(ext)) = "pk5" Then
+                '    type = 6
+            End If
+            sav(myFile)
+            stat = 1
+            buttons()
+            convert()
+        Else
+            'MsgBox("Not a vaild file", MsgBoxStyle.OkOnly)
+        End If
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         OpenFileDialog1.Filter = "All Supported Files (FULLWonderCards, *.ek#)|*.wc7full;*.wc6full;*.pcd;*.ek7;*.ek6;*.ek5;*.ek4|WonderCards (*.wc7full, *.wc6full, *.pcd)|*.wc7full;*.wc6full;*.pcd|Encrypted PK Files (*.ek#)|*.ek7;*.ek6;*.ek5;*.ek4;*.ek3;*.ek2;*.ek1|All files (*.*)|*.*"
@@ -227,12 +270,19 @@
                 'ElseIf ext(UBound(ext)) = "pk5" Then
                 '    type = 6
             End If
-            sav()
+            sav(myFile)
             stat = 1
             buttons()
         Else
             MsgBox("Not a vaild file", MsgBoxStyle.OkOnly)
         End If
+    End Sub
+    Private Sub save(ByVal myFile As String)
+        Dim myBytes As Byte() = HexStringToByteArray(RichTextBox1.Text)
+        My.Computer.FileSystem.WriteAllBytes(myFile, myBytes, False)
+
+        stat = 0
+        buttons()
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         Dim myFileO As String = OpenFileDialog1.FileName
@@ -804,6 +854,23 @@
         Return pkm
     End Function
 #End Region
+    Private Sub convert()
+        If type = 1 Then
+            cutWC()
+        ElseIf type = 2 Then
+            cutPCD()
+        ElseIf type = 3 Then
+            cutEK67()
+        ElseIf type = 4 Then
+            cutEK4()
+        ElseIf type = 5 Then
+            cutEK5()
+            'ElseIf type = 6 Then
+            '    enc()
+        End If
+        stat = 2
+        buttons()
+    End Sub
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If type = 1 Then
             cutWC()
@@ -839,6 +906,57 @@
 #End Region
 
 #Region "Script Maker"
+    Public Sub prep()
+        wcfn = ""
+        If dex = "wc7" Then
+            wcfn = "g7wc.wc7"
+        ElseIf dex = "wc6" Then
+            wcfn = "g6wc.wc6"
+        ElseIf dex = "pgf" Then
+            wcfn = "g5wc.pgf"
+        ElseIf dex = "pgt" Then
+            wcfn = "g4wc.pgt"
+        ElseIf dex = "bin" Then
+            wcfn = "binary.bin"
+        ElseIf dex = "txt" Then
+            wcfn = "text.txt"
+        ElseIf dex = "smk4" Then
+            wcfn = "pkm4.smk4"
+        ElseIf dex = "smk5" Then
+            wcfn = "pkm5.smk5"
+        ElseIf dex = "smk6" Then
+            wcfn = "pkm6.smk6"
+        ElseIf dex = "smk7" Then
+            wcfn = "pkm7.smk7"
+        ElseIf dex = "wc7full" Or dex = "wc6full" Or dex = "pcd" Or dex = "ek7" Or dex = "ek6" Or dex = "ek4" Or dex = "ek5" Then
+            open(data(3))
+            Dim f As String = Nothing
+            If dex = "wc7full" Or dex = "WC7FULL" Then
+                f = pathexe & "\g7wc.wc7"
+                save(f)
+            ElseIf dex = "wc6full" Or dex = "WC6FULL" Then
+                f = pathexe & "\g6wc.wc6"
+                save(f)
+            ElseIf dex = "pcd" Or dex = "PCD" Then
+                f = pathexe & "\g4wc.pgt"
+                save(f)
+            ElseIf dex = "ek7" Or dex = "EK7" Then
+                f = pathexe & "\pkm7.smk7"
+                save(f)
+            ElseIf dex = "ek6" Or dex = "EK6" Then
+                f = pathexe & "\pkm6.smk6"
+                save(f)
+            ElseIf dex = "ek5" Or dex = "EK5" Then
+                f = pathexe & "\pkm5.smk5"
+                save(f)
+            ElseIf dex = "ek4" Or dex = "EK4" Then
+                f = pathexe & "\pkm4.smk4"
+                save(f)
+            End If
+            TextBox3.Text = f
+            t = 1
+        End If
+    End Sub
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Then
             MsgBox("Missing Value(s)", MsgBoxStyle.OkOnly)
@@ -855,72 +973,40 @@
             Else
                 data(2) = "0x" & TextBox4.Text
             End If
+1:
             data(3) = TextBox3.Text
-            If data(3).Contains(":\") Then
+            If data(3).Contains("\") Then
                 Dim da() As String = data(3).Split("\")
-                da(UBound(da)) = da(UBound(da)).Replace(" ", "_")
                 Dim ex() As String = da(UBound(da)).Split(".")
-                Dim dex As String = ex(UBound(ex)).ToLower
-                Dim wcfn As String = ""
-                If dex = "wc7" Then
-                    wcfn = "g7wc.wc7"
-                ElseIf dex = "wc6" Then
-                    wcfn = "g6wc.wc6"
-                ElseIf dex = "pgf" Then
-                    wcfn = "g5wc.pgf"
-                ElseIf dex = "pgt" Then
-                    wcfn = "g4wc.pgt"
-                ElseIf dex = "bin" Then
-                    wcfn = "binary.bin"
-                ElseIf dex = "txt" Then
-                    wcfn = "text.txt"
-                ElseIf dex = "smk4" Then
-                    wcfn = "pkm4.smk4"
-                ElseIf dex = "smk5" Then
-                    wcfn = "pkm5.smk5"
-                ElseIf dex = "smk6" Then
-                    wcfn = "pkm6.smk6"
-                ElseIf dex = "smk7" Then
-                    wcfn = "pkm7.smk7"
+                dex = ex(UBound(ex)).ToLower
+                prep()
+                If t = 0 Then
+                ElseIf t = 1 Then
+                    t = 0
+                    GoTo 1
                 End If
                 If System.IO.File.Exists(pathexe & "\" & wcfn) Then
                 Else
                     System.IO.File.Copy(data(3), pathexe & "\" & wcfn)
                 End If
-                scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & wcfn & """" & " 1"
-            ElseIf data(3).Contains("://") Then
-                Dim dex As String = DropdownB("Confirm", "Cancel", "What's the file's extension?", "Type", {"pgt", "pgf", "wc6", "wc7", "smk4", "smk5", "smk6", "smk7", "bin", "txt"}, "File Type?")
-                Dim wcfn As String = ""
-                If dex = "wc7" Then
-                    wcfn = "g7wc.wc7"
-                ElseIf dex = "wc6" Then
-                    wcfn = "g6wc.wc6"
-                ElseIf dex = "pgf" Then
-                    wcfn = "g5wc.pgf"
-                ElseIf dex = "pgt" Then
-                    wcfn = "g4wc.pgt"
-                ElseIf dex = "bin" Then
-                    wcfn = "binary.bin"
-                ElseIf dex = "txt" Then
-                    wcfn = "text.txt"
-                ElseIf dex = "smk4" Then
-                    wcfn = "pkm4.smk4"
-                ElseIf dex = "smk5" Then
-                    wcfn = "pkm5.smk5"
-                ElseIf dex = "smk6" Then
-                    wcfn = "pkm6.smk6"
-                ElseIf dex = "smk7" Then
-                    wcfn = "pkm7.smk7"
+                If System.IO.File.Exists(webfile) Then
+                    System.IO.File.Delete(webfile)
                 End If
-                Dim dlfile As String = pathexe & "\" & wcfn
-
-                If System.IO.File.Exists(pathexe & "\" & wcfn) Then
+                scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & wcfn & """" & " 1"
+            ElseIf data(3).Contains("/") Then
+                dex = DropdownB("Confirm", "Cancel", "What's the file's extension?", "Type", {"pgt", "pgf", "wc6", "wc7", "pcd", "wc6full", "wc7full", "smk4", "smk5", "smk6", "smk7", "bin", "txt"}, "File Type?")
+                Dim dlfile As String = pathexe & "\webfile." & dex
+                If System.IO.File.Exists(dlfile) Then
+                    System.IO.File.Delete(dlfile)
+                    web.DownloadFile(New Uri(data(3)), dlfile)
                 Else
                     web.DownloadFile(New Uri(data(3)), dlfile)
                     'web.DownloadDataAsync(New Uri(data(3)), dlfile)
                     'My.Computer.Network.DownloadFile(data(3), dlfile)
                 End If
-                scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & wcfn & """" & " 1"
+                TextBox3.Text = dlfile
+                webfile = dlfile
+                GoTo 1
             Else
                 scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1"
             End If
@@ -931,25 +1017,25 @@
             gs.WindowStyle = ProcessWindowStyle.Hidden
             Process.Start(gs)
             System.Threading.Thread.Sleep(1500)
+            scripts = scripts + 1
             TextBox1.Text = Nothing
-            TextBox2.Text = Nothing
             TextBox3.Text = Nothing
-            TextBox4.Text = Nothing
-            ComboBox4.Text = "--Game--"
-            ComboBox4_SelectedIndexChanged(sender, e)
-            MsgBox("Done", 0)
+            Dim objShell = CreateObject("WScript.Shell")
+            Dim X As Integer
+            X = objShell.Popup("Done", 3, "Script Made ☻", vbOKOnly)
+            Select Case X
+                Case vbOK
+                    clicks = clicks + 1
+                Case Else
+            End Select
         End If
     End Sub
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         'OpenFileDialog2.Filter = "Gen6/7 WonderCards (*.wc7, *.wc6)|*.wc7;*.wc6|Gen5 WonderCards (*.pgf)|*.pgf|Gen4 WonderCards (*.pgt, *.pcd)|*.pgt;*.pcd|Pokémon Files (*.pk#)|*.pk7;*.pk6;*.pk5;*.pk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
-        OpenFileDialog2.Filter = "All Supported Files (WonderCards, *.smk#, Binary, and Text files)|*.wc7;*.wc6;*.pgf;*.pgt;*.bin;*.txt;*.smk7;*.smk6;*.smk5;*.smk4|WonderCards (*.wc7, *.wc6, *.pgf, *.pgt)|*.wc7;*.wc6;*.pgf;*.pgt|Script Maker PK files (*.smk#)|*.smk7;*.smk6;*.smk5;*.smk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        OpenFileDialog2.Filter = "All Supported Files (FULLWonderCards, WonderCards, *.ek#, *.smk#, Binary, and Text files)|*.wc7full;*.wc6full;*.pcd;*.ek7;*.ek6;*.ek5;*.ek4;*.wc7;*.wc6;*.pgf;*.pgt;*.bin;*.txt;*.smk7;*.smk6;*.smk5;*.smk4|Recommended Supported Files (WonderCards, *.smk#, Binary, and Text files)|*.wc7;*.wc6;*.pgf;*.pgt;*.bin;*.txt;*.smk7;*.smk6;*.smk5;*.smk4|WonderCards (*.wc7, *.wc6, *.pgf, *.pgt)|*.wc7;*.wc6;*.pgf;*.pgt|Script Maker PK files (*.smk#)|*.smk7;*.smk6;*.smk5;*.smk4|bin files (*.bin)|*.bin|txt files (*.txt)|*.txt|All files (*.*)|*.*"
         OpenFileDialog2.ShowDialog()
         Dim ex() As String = OpenFileDialog2.FileName.Split(".")
-        If ex(UBound(ex)).ToLower.Contains("full") Or ex(UBound(ex)).ToLower.Contains("pk") Or ex(UBound(ex)).ToLower.Contains("ek") Then
-            MsgBox("File needs to be converted. See Converter Tab.", MsgBoxStyle.OkOnly)
-        Else
-            TextBox3.Text = OpenFileDialog2.FileName
-        End If
+        TextBox3.Text = OpenFileDialog2.FileName
     End Sub
     Private Sub TabPage1_DragEnter(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles TabPage1.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
@@ -1567,7 +1653,7 @@
     End Sub
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Dim dat() = Label5.Text.Split(" ")
-        TabControl1.TabIndex -= 2
+        TabControl1.TabIndex -= 1
         TextBox2.Text = dat(LBound(dat))
         If ComboBox1.Text = "Wonder Card Slot" Then
             If ComboBox3.Text = dp Or ComboBox3.Text = pt Or ComboBox3.Text = hgss Then
@@ -1592,7 +1678,8 @@
         End If
         ComboBox4.Text = ComboBox3.Text
         ComboBox4_SelectedIndexChanged(sender, e)
-        TabControl1.TabIndex += 2
+        'TabControl1.TabIndex += 1
+        TabControl1.SelectedTab = TabPage1
     End Sub
     Private Sub Label5_TextChanged(sender As Object, e As EventArgs) Handles Label5.TextChanged
         Button6.Enabled = True
