@@ -88,6 +88,17 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Regnum.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Beta\</OutputPath>
+    <DocumentationFile>PKSMScriptMaker.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MSBuild.AutoILMerge.Task, Version=1.0.0.0, Culture=en-US, processorArchitecture=MSIL">
       <HintPath>..\packages\MSBuild.AutoILMerge.Task.1.1.1\lib\net40\MSBuild.AutoILMerge.Task.dll</HintPath>
