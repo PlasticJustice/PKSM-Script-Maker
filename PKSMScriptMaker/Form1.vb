@@ -31,6 +31,7 @@
     Dim usum As String = "UltraSun/UltraMoon"
 
     Dim wcnum As Integer
+    Dim pcd As Boolean
     Dim boxlast As String
     Dim boxnum As Integer
     Dim boxes As Integer
@@ -234,6 +235,8 @@
                 type = 5
                 'ElseIf ext(UBound(ext)) = "pk5" Then
                 '    type = 6
+            ElseIf ext(UBound(ext)) = "pgt" Or ext(UBound(ext)) = "PGT" And TextBox4.Text = "0x358" Then
+                type = 7
             End If
             sav(myFile)
             stat = 1
@@ -329,6 +332,12 @@
         If (data.Length = SizeFull) Then
             data = data.Remove(SizeWC, SizeFull - SizeWC).ToArray()
         End If
+        RichTextBox1.Text = data
+        MsgBox("Successfully Converted", MsgBoxStyle.OkOnly)
+    End Sub
+    Private Sub buildPCD()
+        Dim data As String = RichTextBox1.Text
+        data = data & My.Resources.PCD
         RichTextBox1.Text = data
         MsgBox("Successfully Converted", MsgBoxStyle.OkOnly)
     End Sub
@@ -867,6 +876,8 @@
             cutEK5()
             'ElseIf type = 6 Then
             '    enc()
+        ElseIf type = 7 Then
+            buildPCD()
         End If
         stat = 2
         buttons()
@@ -908,6 +919,7 @@
 #Region "Script Maker"
     Public Sub prep()
         wcfn = ""
+        Dim f As String = Nothing
         If dex = "wc7" Then
             wcfn = "g7wc.wc7"
         ElseIf dex = "wc6" Then
@@ -915,7 +927,25 @@
         ElseIf dex = "pgf" Then
             wcfn = "g5wc.pgf"
         ElseIf dex = "pgt" Then
-            wcfn = "g4wc.pgt"
+            If TextBox4.Text = "0x358" Then
+                open(data(3))
+                f = pathexe & "\g4pcd.pcd"
+                save(f)
+                TextBox3.Text = f
+                t = 1
+            Else
+                wcfn = "g4wc.pgt"
+            End If
+        ElseIf dex = "pcd" Or dex = "PCD" Then
+            If TextBox4.Text = "0x358" Then
+                wcfn = "g4pcd.pcd"
+            Else
+                open(data(3))
+                f = pathexe & "\g4wc.pgt"
+                save(f)
+                TextBox3.Text = f
+                t = 1
+            End If
         ElseIf dex = "bin" Then
             wcfn = "binary.bin"
         ElseIf dex = "txt" Then
@@ -930,15 +960,11 @@
             wcfn = "pkm7.smk7"
         ElseIf dex = "wc7full" Or dex = "wc6full" Or dex = "pcd" Or dex = "ek7" Or dex = "ek6" Or dex = "ek4" Or dex = "ek5" Then
             open(data(3))
-            Dim f As String = Nothing
             If dex = "wc7full" Or dex = "WC7FULL" Then
                 f = pathexe & "\g7wc.wc7"
                 save(f)
             ElseIf dex = "wc6full" Or dex = "WC6FULL" Then
                 f = pathexe & "\g6wc.wc6"
-                save(f)
-            ElseIf dex = "pcd" Or dex = "PCD" Then
-                f = pathexe & "\g4wc.pgt"
                 save(f)
             ElseIf dex = "ek7" Or dex = "EK7" Then
                 f = pathexe & "\pkm7.smk7"
@@ -983,8 +1009,8 @@
                 If t = 0 Then
                 ElseIf t = 1 Then
                     t = 0
-                    GoTo 1
-                End If
+                        GoTo 1
+                    End If
                 If System.IO.File.Exists(pathexe & "\" & wcfn) Then
                 Else
                     System.IO.File.Copy(data(3), pathexe & "\" & wcfn)
@@ -993,9 +1019,9 @@
                     System.IO.File.Delete(webfile)
                 End If
                 scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & """" & wcfn & """" & " 1"
-            ElseIf data(3).Contains("/") Then
-                dex = DropdownB("Confirm", "Cancel", "What's the file's extension?", "Type", {"pgt", "pgf", "wc6", "wc7", "pcd", "wc6full", "wc7full", "smk4", "smk5", "smk6", "smk7", "bin", "txt"}, "File Type?")
-                Dim dlfile As String = pathexe & "\webfile." & dex
+                ElseIf data(3).Contains("/") Then
+                    dex = DropdownB("Confirm", "Cancel", "What's the file's extension?", "Type", {"pgt", "pgf", "wc6", "wc7", "pcd", "wc6full", "wc7full", "smk4", "smk5", "smk6", "smk7", "bin", "txt"}, "File Type?")
+                    Dim dlfile As String = pathexe & "\webfile." & dex
                 If System.IO.File.Exists(dlfile) Then
                     System.IO.File.Delete(dlfile)
                     web.DownloadFile(New Uri(data(3)), dlfile)
@@ -1005,10 +1031,10 @@
                     'My.Computer.Network.DownloadFile(data(3), dlfile)
                 End If
                 TextBox3.Text = dlfile
-                webfile = dlfile
-                GoTo 1
-            Else
-                scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1"
+                    webfile = dlfile
+                    GoTo 1
+                Else
+                    scm = """" & data(0) & """ -i " & data(1) & " " & data(2) & " " & data(3) & " 1"
             End If
             System.IO.File.WriteAllText(prog, My.Resources.PKSMScript)
             System.IO.File.WriteAllText(progG, My.Resources.genScripts)
@@ -1036,6 +1062,12 @@
         OpenFileDialog2.ShowDialog()
         Dim ex() As String = OpenFileDialog2.FileName.Split(".")
         TextBox3.Text = OpenFileDialog2.FileName
+    End Sub
+    Private Sub TabPage1_DragDrop(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles TabPage1.DragDrop
+        Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+        For Each pathfd In files
+            TextBox3.Text = pathfd
+        Next
     End Sub
     Private Sub TabPage1_DragEnter(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles TabPage1.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
@@ -1077,6 +1109,11 @@
                 For i = 1 To wcnum Step 1
                     ComboBox2.Items.Add("WC " & i)
                 Next i
+                If pcd = True Then
+                    ComboBox2.Items.Add("PCD 1")
+                    ComboBox2.Items.Add("PCD 2")
+                    ComboBox2.Items.Add("PCD 3")
+                End If
             Case "Battle Styles"
                 ComboBox2.Enabled = True
                 ComboBox2.Text = "--Style--"
@@ -1184,40 +1221,49 @@
                 'WC
                 Dim cb2 As Integer = ComboBox2.SelectedIndex
                 If ComboBox1.Text = "Wonder Card Slot" Then
-                    Dim v As Integer = (&H4A7FC + (cb2 * &H104))
-                    Label5.Text = "0x" & Hex(v)
-
+                    If cb2 < 8 Then
+                        Dim v As Integer = (&H4A7FC + (cb2 * &H104))
+                        Label5.Text = "0x" & Hex(v)
+                    Else
+                        Dim v As Integer = (&HB01C + ((cb2 - 8) * &H358))
+                        Label5.Text = "0x" & Hex(v)
+                    End If
                     'PC
                 ElseIf ComboBox1.Text = "BOX " & boxnum Then
                     Dim v As Integer = (&HC104 + ((((boxnum - 1) * 30) + cb2) * &H88))
                     Label5.Text = "0x" & Hex(v)
-
                 End If
             Case pt
                 'WC
                 Dim cb2 As Integer = ComboBox2.SelectedIndex
                 If ComboBox1.Text = "Wonder Card Slot" Then
-                    Dim v As Integer = (&H4B5C0 + (cb2 * &H104))
-                    Label5.Text = "0x" & Hex(v)
-
+                    If cb2 < 8 Then
+                        Dim v As Integer = (&H4B5C0 + (cb2 * &H104))
+                        Label5.Text = "0x" & Hex(v)
+                    Else
+                        Dim v As Integer = (&H4BDE0 + ((cb2 - 8) * &H358))
+                        Label5.Text = "0x" & Hex(v)
+                    End If
                     'PC
                 ElseIf ComboBox1.Text = "BOX " & boxnum Then
                     Dim v As Integer = (&HCF30 + ((((boxnum - 1) * 30) + cb2) * &H88))
                     Label5.Text = "0x" & Hex(v)
-
                 End If
             Case hgss
                 'WC
                 Dim cb2 As Integer = ComboBox2.SelectedIndex
                 If ComboBox1.Text = "Wonder Card Slot" Then
-                    Dim v As Integer = (&H9E3C + (cb2 * &H104))
-                    Label5.Text = "0x" & Hex(v)
-
+                    If cb2 < 8 Then
+                        Dim v As Integer = (&H9E3C + (cb2 * &H104))
+                        Label5.Text = "0x" & Hex(v)
+                    Else
+                        Dim v As Integer = (&HA65C + ((cb2 - 8) * &H358))
+                        Label5.Text = "0x" & Hex(v)
+                    End If
                     'PC
                 ElseIf ComboBox1.Text = "BOX " & boxnum Then
-                    Dim v As Integer = (&HF700 + ((((boxnum - 1) * 30) + cb2) * &H88))
+                        Dim v As Integer = (&HF700 + ((((boxnum - 1) * 30) + cb2) * &H88))
                     Label5.Text = "0x" & Hex(v)
-
                 End If
             Case bw
                 Dim cb2 As Integer = ComboBox2.SelectedIndex
@@ -1541,7 +1587,8 @@
     Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
         Select Case ComboBox3.Text
             Case dp
-                wcnum = 3
+                wcnum = 8
+                pcd = True
                 boxes = 18
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
@@ -1550,7 +1597,8 @@
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case pt
-                wcnum = 3
+                wcnum = 8
+                pcd = True
                 boxes = 18
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
@@ -1559,7 +1607,8 @@
                 ComboBox1_SelectedIndexChanged(sender, e)
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case hgss
-                wcnum = 3
+                wcnum = 8
+                pcd = True
                 boxes = 18
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
@@ -1569,6 +1618,7 @@
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case bw
                 wcnum = 12
+                pcd = False
                 boxes = 24
                 Me.ComboBox1.Items.Clear()
                 boxy()
@@ -1577,6 +1627,7 @@
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case b2w2
                 wcnum = 12
+                pcd = False
                 boxes = 24
                 Me.ComboBox1.Items.Clear()
                 boxy()
@@ -1585,6 +1636,7 @@
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case xy
                 wcnum = 24
+                pcd = False
                 boxes = 31
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
@@ -1597,6 +1649,7 @@
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case oras
                 wcnum = 24
+                pcd = False
                 boxes = 31
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
@@ -1609,6 +1662,7 @@
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case sm
                 wcnum = 48
+                pcd = False
                 boxes = 32
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
@@ -1623,6 +1677,7 @@
                 ComboBox2_SelectedIndexChanged(sender, e)
             Case usum
                 wcnum = 48
+                pcd = False
                 boxes = 32
                 Me.ComboBox1.Items.Clear()
                 ComboBox1.Items.Add("Wonder Card Slot")
@@ -1655,11 +1710,15 @@
         Dim dat() = Label5.Text.Split(" ")
         TabControl1.TabIndex -= 1
         TextBox2.Text = dat(LBound(dat))
-        If ComboBox1.Text = "Wonder Card Slot" Then
+        If ComboBox1.Text = "Wonder Card Slot" And ComboBox2.Text.Contains("WC ") Then
             If ComboBox3.Text = dp Or ComboBox3.Text = pt Or ComboBox3.Text = hgss Then
                 TextBox4.Text = "0x104"
             Else
                 TextBox4.Text = "0x108"
+            End If
+        ElseIf ComboBox1.Text = "Wonder Card Slot" And ComboBox2.Text.Contains("PCD ") Then
+            If ComboBox3.Text = dp Or ComboBox3.Text = pt Or ComboBox3.Text = hgss Then
+                TextBox4.Text = "0x358"
             End If
         ElseIf ComboBox1.Text = "Battle Styles" Or ComboBox1.Text = "Vivillon" Or ComboBox1.Text = "Language" Then
             TextBox4.Text = "1"

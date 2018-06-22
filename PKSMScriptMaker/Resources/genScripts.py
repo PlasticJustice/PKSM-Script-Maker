@@ -73,7 +73,9 @@ def main(args):
 	if os.path.isfile("pkm6.smk6"):
 		os.remove("pkm6.smk6")
 	if os.path.isfile("pkm7.smk7"):
-		os.remove("pkm7.smk7")		
+		os.remove("pkm7.smk7")	
+	if os.path.isfile("g4pcd.pcd"):
+		os.remove("g4pcd.pcd")	
 	
 def generate(game):
 	with open(os.path.join("scripts%s.txt" % game)) as pksmArgFile:

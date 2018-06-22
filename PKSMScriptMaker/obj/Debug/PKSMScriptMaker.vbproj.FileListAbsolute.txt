@@ -58,3 +58,4 @@ C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptM
 C:\Users\Nick\source\repos\PKSMScriptMaker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.pdb
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.vbprojResolveAssemblyReference.cache
 C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.LangMessageBox.resources
+C:\Users\Kochen Family\source\repos\PKSM-Script-Maker\PKSMScriptMaker\obj\Debug\PKSMScriptMaker.Form2.resources

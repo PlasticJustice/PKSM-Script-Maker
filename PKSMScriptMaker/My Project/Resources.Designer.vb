@@ -86,6 +86,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to 3A0153014F018801510153015201DE01310149015201DE012501DE013A012D012E01FFFF2D0132013F01AB01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF801D000015000D002B01DE013A0153014F018801510153015201DE012D01450156014801DE012E01450158014501DE01B901AE01540147014801BA01DE014701560149014501580149014801DE014A01560153015101DE0100E03A0135013D0137013D01470156014D0154015801370145014F0149015601AE01DE0100E000E03D015301560156015D01DE014A0153015601DE0158014C014901DE014601530156014D0152014B01DE014701450156014801DE0148014501 [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property PCD() As String
+            Get
+                Return ResourceManager.GetString("PCD", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to #!/usr/bin/python3
         '''import argparse
         '''
@@ -106,6 +115,16 @@ Namespace My.Resources
         Friend ReadOnly Property PKSMScript() As String
             Get
                 Return ResourceManager.GetString("PKSMScript", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property wc() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("wc", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
     End Module
